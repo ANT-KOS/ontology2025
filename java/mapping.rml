@@ -1,0 +1,660 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix ex: <http://example.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix fno: <http://semweb.datasciencelab.be/ns/function#> .
+@base <http://example.com/> .
+
+### Logical Source for the CSV Dataset
+<#LogicalSource>
+  a rml:LogicalSource ;
+  rml:source "survey_results_public.min.csv" ;
+  rml:referenceFormulation ql:CSV ;
+  rml:csvDelimiter "," .
+
+### Mapping for Developer
+<#DeveloperMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+    rr:class ex:Developer
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:devId ;
+    rr:objectMap [ rml:reference "DevId" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:age ;
+    rr:objectMap [ rml:reference "Age" ; rr:datatype xsd:integer ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:hasCountry ;
+    rr:objectMap [ rr:template "http://example.org/country/{Country}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:usesCurrency ;
+    rr:objectMap [ rr:template "http://example.org/currency/{Currency}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:hasEmploymentType ;
+    rr:objectMap [ rr:template "http://example.org/employment/{Employment}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:hasEducationLevel ;
+    rr:objectMap [ rr:template "http://example.org/education/{EdLevel}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:hasJobSatisfaction ;
+    rr:objectMap [ rr:template "http://example.org/satisfaction/{JobSat}" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:yearsOfCoding ;
+    rr:objectMap [ rml:reference "YearsCode" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:yearsAsPro ;
+    rr:objectMap [ rml:reference "YearsCodePro" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:compensation ;
+    rr:objectMap [ rml:reference "CompTotal" ; rr:datatype xsd:decimal ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:devType ;
+    rr:objectMap [ rml:reference "DevType" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:orgSize ;
+    rr:objectMap [ rml:reference "OrgSize" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:remoteWork ;
+    rr:objectMap [ rml:reference "RemoteWork" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:industry ;
+    rr:objectMap [ rml:reference "Industry" ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:workExperience ;
+    rr:objectMap [ rml:reference "WorkExp" ]
+  ] .
+
+### Helper: Split Function for Multi-Valued Fields
+<#SplitValues>
+  a fnml:FunctionMap ;
+  fnml:functionValue [
+    rr:predicateObjectMap [
+      rr:predicate fno:executes ;
+      rr:objectMap [ rr:constant grel:split ]
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate grel:valueParameter ;
+      rml:reference "Values"
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate grel:splitRegex ;
+      rr:objectMap [ rr:constant ";" ]
+    ]
+  ] .
+
+### LanguageHaveWorkedWith Mapping
+<#LanguageHaveWorkedWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:usesLanguage ;
+    rr:objectMap [
+      rr:template "http://example.org/language/{Language}" ;
+      rr:termType rr:IRI ;
+      rml:reference "LanguageHaveWorkedWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### LanguageWantToWorkWith Mapping
+<#LanguageWantToWorkWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:wantsLanguage ;
+    rr:objectMap [
+      rr:template "http://example.org/language/{Language}" ;
+      rr:termType rr:IRI ;
+      rml:reference "LanguageWantToWorkWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### LanguageAdmired Mapping
+<#LanguageAdmiredMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:admiresLanguage ;
+    rr:objectMap [
+      rr:template "http://example.org/language/{Language}" ;
+      rr:termType rr:IRI ;
+      rml:reference "LanguageAdmired" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### DatabaseHaveWorkedWith Mapping
+<#DatabaseHaveWorkedWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:usesDatabase ;
+    rr:objectMap [
+      rr:template "http://example.org/database/{Database}" ;
+      rr:termType rr:IRI ;
+      rml:reference "DatabaseHaveWorkedWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### DatabaseWantToWorkWith Mapping
+<#DatabaseWantToWorkWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:wantsDatabase ;
+    rr:objectMap [
+      rr:template "http://example.org/database/{Database}" ;
+      rr:termType rr:IRI ;
+      rml:reference "DatabaseWantToWorkWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### DatabaseAdmired Mapping
+<#DatabaseAdmiredMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:admiresDatabase ;
+    rr:objectMap [
+      rr:template "http://example.org/database/{Database}" ;
+      rr:termType rr:IRI ;
+      rml:reference "DatabaseAdmired" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### PlatformHaveWorkedWith Mapping
+<#PlatformHaveWorkedWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:usesPlatform ;
+    rr:objectMap [
+      rr:template "http://example.org/platform/{Platform}" ;
+      rr:termType rr:IRI ;
+      rml:reference "PlatformHaveWorkedWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### PlatformWantToWorkWith Mapping
+<#PlatformWantToWorkWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:wantsPlatform ;
+    rr:objectMap [
+      rr:template "http://example.org/platform/{Platform}" ;
+      rr:termType rr:IRI ;
+      rml:reference "PlatformWantToWorkWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### PlatformAdmired Mapping
+<#PlatformAdmiredMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:admiresPlatform ;
+    rr:objectMap [
+      rr:template "http://example.org/platform/{Platform}" ;
+      rr:termType rr:IRI ;
+      rml:reference "PlatformAdmired" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### WebframeHaveWorkedWith Mapping
+<#WebframeHaveWorkedWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:usesWebframe ;
+    rr:objectMap [
+      rr:template "http://example.org/webframe/{Webframe}" ;
+      rr:termType rr:IRI ;
+      rml:reference "WebframeHaveWorkedWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### WebframeWantToWorkWith Mapping
+<#WebframeWantToWorkWithMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:wantsWebframe ;
+    rr:objectMap [
+      rr:template "http://example.org/webframe/{Webframe}" ;
+      rr:termType rr:IRI ;
+      rml:reference "WebframeWantToWorkWith" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+### WebframeAdmired Mapping
+<#WebframeAdmiredMapping>
+  rml:logicalSource <#LogicalSource> ;
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{DevId}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:admiresWebframe ;
+    rr:objectMap [
+      rr:template "http://example.org/webframe/{Webframe}" ;
+      rr:termType rr:IRI ;
+      rml:reference "WebframeAdmired" ;
+      fnml:functionValue <#SplitValues>
+    ]
+  ] .
+
+  ### EmbeddedHaveWorkedWith Mapping
+  <#EmbeddedHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesEmbedded ;
+      rr:objectMap [
+        rr:template "http://example.org/embedded/{Embedded}" ;
+        rr:termType rr:IRI ;
+        rml:reference "EmbeddedHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### EmbeddedWantToWorkWith Mapping
+  <#EmbeddedWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsEmbedded ;
+      rr:objectMap [
+        rr:template "http://example.org/embedded/{Embedded}" ;
+        rr:termType rr:IRI ;
+        rml:reference "EmbeddedWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### EmbeddedAdmired Mapping
+  <#EmbeddedAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresEmbedded ;
+      rr:objectMap [
+        rr:template "http://example.org/embedded/{Embedded}" ;
+        rr:termType rr:IRI ;
+        rml:reference "EmbeddedAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### ToolsTechHaveWorkedWith Mapping
+  <#ToolsTechHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesTool ;
+      rr:objectMap [
+        rr:template "http://example.org/tool/{ToolsTech}" ;
+        rr:termType rr:IRI ;
+        rml:reference "ToolsTechHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### ToolsTechWantToWorkWith Mapping
+  <#ToolsTechWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsTool ;
+      rr:objectMap [
+        rr:template "http://example.org/tool/{ToolsTech}" ;
+        rr:termType rr:IRI ;
+        rml:reference "ToolsTechWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### ToolsTechAdmired Mapping
+  <#ToolsTechAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresTool ;
+      rr:objectMap [
+        rr:template "http://example.org/tool/{ToolsTech}" ;
+        rr:termType rr:IRI ;
+        rml:reference "ToolsTechAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### NEWCollabToolsHaveWorkedWith Mapping
+  <#NEWCollabToolsHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesCollabTool ;
+      rr:objectMap [
+        rr:template "http://example.org/collabTool/{NEWCollabTools}" ;
+        rr:termType rr:IRI ;
+        rml:reference "NEWCollabToolsHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### NEWCollabToolsWantToWorkWith Mapping
+  <#NEWCollabToolsWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsCollabTool ;
+      rr:objectMap [
+        rr:template "http://example.org/collabTool/{NEWCollabTools}" ;
+        rr:termType rr:IRI ;
+        rml:reference "NEWCollabToolsWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### NEWCollabToolsAdmired Mapping
+  <#NEWCollabToolsAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresCollabTool ;
+      rr:objectMap [
+        rr:template "http://example.org/collabTool/{NEWCollabTools}" ;
+        rr:termType rr:IRI ;
+        rml:reference "NEWCollabToolsAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OpSysPersonalUse Mapping
+  <#OpSysPersonalUseMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesOpSysForPersonal ;
+      rr:objectMap [
+        rr:template "http://example.org/opsys/{OpSysPersonalUse}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OpSysPersonal use" ;
+      ]
+    ] .
+
+  ### OpSysProfessionalUse Mapping
+  <#OpSysProfessionalUseMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesOpSysForProfessional ;
+      rr:objectMap [
+        rr:template "http://example.org/opsys/{OpSysProfessional use}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OpSysProfessional use" ;
+      ]
+    ] .
+
+  ### OfficeStackAsyncHaveWorkedWith Mapping
+  <#OfficeStackAsyncHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesOfficeStackAsync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackAsyncHaveWorkedWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackAsyncHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OfficeStackAsyncWantToWorkWith Mapping
+  <#OfficeStackAsyncWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsOfficeStackAsync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackAsyncWantToWorkWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackAsyncWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OfficeStackAsyncAdmired Mapping
+  <#OfficeStackAsyncAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresOfficeStackAsync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackAsyncAdmired}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackAsyncAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OfficeStackSyncHaveWorkedWith Mapping
+  <#OfficeStackSyncHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesOfficeStackSync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackSyncHaveWorkedWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackSyncHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OfficeStackSyncWantToWorkWith Mapping
+  <#OfficeStackSyncWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsOfficeStackSync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackSyncWantToWorkWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackSyncWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### OfficeStackSyncAdmired Mapping
+  <#OfficeStackSyncAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresOfficeStackSync ;
+      rr:objectMap [
+        rr:template "http://example.org/officestack/{OfficeStackSyncAdmired}" ;
+        rr:termType rr:IRI ;
+        rml:reference "OfficeStackSyncAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### AiSearchDevHaveWorkedWith Mapping
+  <#AiSearchDevHaveWorkedWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:usesAiSearchDev ;
+      rr:objectMap [
+        rr:template "http://example.org/aisearch/{AiSearchDevHaveWorkedWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "AiSearchDevHaveWorkedWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### AiSearchDevWantToWorkWith Mapping
+  <#AiSearchDevWantToWorkWithMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:wantsAiSearchDev ;
+      rr:objectMap [
+        rr:template "http://example.org/aisearch/{AiSearchDevWantToWorkWith}" ;
+        rr:termType rr:IRI ;
+        rml:reference "AiSearchDevWantToWorkWith" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### AiSearchDevAdmired Mapping
+  <#AiSearchDevAdmiredMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:admiresAiSearchDev ;
+      rr:objectMap [
+        rr:template "http://example.org/aisearch/{AiSearchDevAdmired}" ;
+        rr:termType rr:IRI ;
+        rml:reference "AiSearchDevAdmired" ;
+        fnml:functionValue <#SplitValues>
+      ]
+    ] .
+
+  ### WorkExp Mapping
+  <#WorkExpMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:hasWorkExperience ;
+      rr:objectMap [ rml:reference "WorkExp" ]
+    ] .
+
+  ### Industry Mapping
+  <#IndustryMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:worksInIndustry ;
+      rr:objectMap [ rml:reference "Industry" ]
+    ] .
+
+  ### JobSat Mapping
+  <#JobSatMapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap [
+      rr:template "http://example.org/dev/{DevId}" ;
+    ] ;
+    rr:predicateObjectMap [
+      rr:predicate ex:hasJobSatisfaction ;
+      rr:objectMap [ rml:reference "JobSat" ]
+    ] .

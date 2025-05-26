@@ -1,0 +1,80 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix ex: <http://example.org/ontology#> .
+@prefix map: <http://example.org/mappings#> .
+
+map:DeveloperMapping a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "survey_results_public.min.csv" ;
+    rml:referenceFormulation ql:CSV;
+    rml:csvDelimiter ","
+  ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/dev/{ResponseId}" ;
+    rr:class ex:Developer
+  ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:mainBranch ; rr:objectMap [ rml:reference "MainBranch" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:age ; rr:objectMap [ rml:reference "Age" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:employment ; rr:objectMap [ rml:reference "Employment" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:remoteWork ; rr:objectMap [ rml:reference "RemoteWork" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:educationLevel ; rr:objectMap [ rml:reference "EdLevel" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:learnCodeOnline ; rr:objectMap [ rml:reference "LearnCodeOnline" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:techDoc ; rr:objectMap [ rml:reference "TechDoc" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:yearsCode ; rr:objectMap [ rml:reference "YearsCode" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:yearsCodePro ; rr:objectMap [ rml:reference "YearsCodePro" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:devType ; rr:objectMap [ rml:reference "DevType" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:orgSize ; rr:objectMap [ rml:reference "OrgSize" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:country ; rr:objectMap [ rml:reference "Country" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:currency ; rr:objectMap [ rml:reference "Currency" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:compTotal ; rr:objectMap [ rml:reference "CompTotal" ] ] ;
+
+  # Προγραμματιστικές προτιμήσεις
+  rr:predicateObjectMap [ rr:predicate ex:languageHaveWorkedWith ; rr:objectMap [ rml:reference "LanguageHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:languageWantToWorkWith ; rr:objectMap [ rml:reference "LanguageWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:languageAdmired ; rr:objectMap [ rml:reference "LanguageAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:databaseHaveWorkedWith ; rr:objectMap [ rml:reference "DatabaseHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:databaseWantToWorkWith ; rr:objectMap [ rml:reference "DatabaseWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:databaseAdmired ; rr:objectMap [ rml:reference "DatabaseAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:platformHaveWorkedWith ; rr:objectMap [ rml:reference "PlatformHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:platformWantToWorkWith ; rr:objectMap [ rml:reference "PlatformWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:platformAdmired ; rr:objectMap [ rml:reference "PlatformAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:webframeHaveWorkedWith ; rr:objectMap [ rml:reference "WebframeHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:webframeWantToWorkWith ; rr:objectMap [ rml:reference "WebframeWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:webframeAdmired ; rr:objectMap [ rml:reference "WebframeAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:embeddedHaveWorkedWith ; rr:objectMap [ rml:reference "EmbeddedHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:embeddedWantToWorkWith ; rr:objectMap [ rml:reference "EmbeddedWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:embeddedAdmired ; rr:objectMap [ rml:reference "EmbeddedAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:toolsTechHaveWorkedWith ; rr:objectMap [ rml:reference "ToolsTechHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:toolsTechWantToWorkWith ; rr:objectMap [ rml:reference "ToolsTechWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:toolsTechAdmired ; rr:objectMap [ rml:reference "ToolsTechAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:collabToolsHaveWorkedWith ; rr:objectMap [ rml:reference "NEWCollabToolsHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:collabToolsWantToWorkWith ; rr:objectMap [ rml:reference "NEWCollabToolsWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:collabToolsAdmired ; rr:objectMap [ rml:reference "NEWCollabToolsAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:osPersonal ; rr:objectMap [ rml:reference "OpSysPersonal use" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:osProfessional ; rr:objectMap [ rml:reference "OpSysProfessional use" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:officeAsyncHaveWorkedWith ; rr:objectMap [ rml:reference "OfficeStackAsyncHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:officeAsyncWantToWorkWith ; rr:objectMap [ rml:reference "OfficeStackAsyncWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:officeAsyncAdmired ; rr:objectMap [ rml:reference "OfficeStackAsyncAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:officeSyncHaveWorkedWith ; rr:objectMap [ rml:reference "OfficeStackSyncHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:officeSyncWantToWorkWith ; rr:objectMap [ rml:reference "OfficeStackSyncWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:officeSyncAdmired ; rr:objectMap [ rml:reference "OfficeStackSyncAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:aiSearchHaveWorkedWith ; rr:objectMap [ rml:reference "AiSearchDevHaveWorkedWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:aiSearchWantToWorkWith ; rr:objectMap [ rml:reference "AiSearchDevWantToWorkWith" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:aiSearchAdmired ; rr:objectMap [ rml:reference "AiSearchDevAdmired" ] ] ;
+
+  rr:predicateObjectMap [ rr:predicate ex:workExp ; rr:objectMap [ rml:reference "WorkExp" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:industry ; rr:objectMap [ rml:reference "Industry" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:jobSatisfaction ; rr:objectMap [ rml:reference "JobSat" ] ] .
