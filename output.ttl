@@ -1,4 +1,7 @@
 @prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 <http://example.org/dev/1> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -8,13 +11,13 @@
   ex:hasEducationLevel "Primary/elementary school";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
-ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
-  <http://www.w3.org/2000/01/rdf-schema#domain> <http://example.org/testDomain/>;
-  <http://www.w3.org/2000/01/rdf-schema#range> <http://example.org/testRange/> .
-
-<http://example.org/country/United%20States%20of%20America> a ex:Country;
+<http://example.org/country/United%20States%20of%20America> a ex:hasCountry;
   ex:countryName "United States of America";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q30> .
+
+<http://example.org/hasCountry/> a rdf:Property;
+  rdfs:domain ex:developer;
+  rdfs:range ex:country .
 
 <http://example.org/dev/2> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -22,16 +25,74 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "20";
   ex:yearsAsPro "17";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Kotlin>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "17" .
 
 <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>
-  a ex:Country;
+  a ex:hasCountry;
   ex:countryName "United Kingdom of Great Britain and Northern Ireland";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q1860> .
+
+<http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)> a ex:languagesUsed,
+    ex:languagesWanted, ex:languagesAdmired;
+  ex:programmingLanguageName "Bash/Shell (all shells)" .
+
+<http://example.org/languagesUsed/> a rdf:Property;
+  rdfs:domain ex:developer;
+  rdfs:range ex:programmingLanguage .
+
+<http://example.org/programmingLanguage/Go> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Go" .
+
+<http://example.org/programmingLanguage/HTML/CSS> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "HTML/CSS" .
+
+<http://example.org/programmingLanguage/Java> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Java" .
+
+<http://example.org/programmingLanguage/JavaScript> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "JavaScript" .
+
+<http://example.org/programmingLanguage/Python> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Python" .
+
+<http://example.org/programmingLanguage/TypeScript> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "TypeScript" .
+
+<http://example.org/languagesWanted/> a rdf:Property;
+  rdfs:domain ex:developer;
+  rdfs:range ex:programmingLanguage .
+
+<http://example.org/programmingLanguage/Kotlin> a ex:languagesWanted;
+  ex:programmingLanguageName "Kotlin" .
+
+<http://example.org/languagesAdmired/> a rdf:Property;
+  rdfs:domain ex:developer;
+  rdfs:range ex:programmingLanguage .
 
 <http://example.org/dev/3> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -39,36 +100,105 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "37";
   ex:yearsAsPro "27";
   ex:devType "Developer Experience";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>;
+  ex:embeddedUsed "Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi" .
+
+<http://example.org/programmingLanguage/C#> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "C#" .
 
 <http://example.org/dev/4> a ex:Developer;
   ex:hasMainBranch "I am learning to code";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Stack Overflow;How-to videos;Interactive tutorial";
   ex:yearsOfCoding "4";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Canada> .
+  ex:hasCountry <http://example.org/country/Canada>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Rasberry Pi" .
 
-<http://example.org/country/Canada> a ex:Country;
+<http://example.org/country/Canada> a ex:hasCountry;
   ex:countryName "Canada";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q16> .
+
+<http://example.org/programmingLanguage/C> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "C" .
+
+<http://example.org/programmingLanguage/C++> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "C++" .
+
+<http://example.org/programmingLanguage/PHP> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "PHP" .
+
+<http://example.org/programmingLanguage/PowerShell> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "PowerShell" .
+
+<http://example.org/programmingLanguage/SQL> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "SQL" .
 
 <http://example.org/dev/5> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;Social Media;Video-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "9";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Norway> .
+  ex:hasCountry <http://example.org/country/Norway>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:embeddedUsed "CMake;Cargo;Rasberry Pi";
+  ex:embeddedWanted "CMake;Rasberry Pi";
+  ex:embeddedAdmired "CMake;Rasberry Pi" .
 
-<http://example.org/country/Norway> a ex:Country;
+<http://example.org/country/Norway> a ex:hasCountry;
   ex:countryName "Norway";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q20> .
+
+<http://example.org/programmingLanguage/Lua> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Lua" .
+
+<http://example.org/programmingLanguage/Rust> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Rust" .
 
 <http://example.org/dev/6> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
@@ -77,7 +207,27 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEducationLevel "Primary/elementary school";
   ex:yearsOfCoding "10";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/Swift>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Swift>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Swift>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi" .
+
+<http://example.org/programmingLanguage/Swift> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Swift" .
 
 <http://example.org/dev/7> a ex:Developer;
   ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
@@ -85,23 +235,39 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Stack Overflow;Written-based Online Courses";
   ex:yearsOfCoding "7";
   ex:yearsAsPro "7";
   ex:devType "Academic researcher";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/R>;
+  ex:languagesWanted <http://example.org/programmingLanguage/R>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/R> .
+
+<http://example.org/programmingLanguage/R> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "R" .
 
 <http://example.org/dev/8> a ex:Developer;
   ex:hasMainBranch "I am learning to code";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time;Not employed, but looking for work";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Video-based Online Courses";
+  ex:usesTechDoc "First-party knowledge base";
   ex:yearsOfCoding "1";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Uzbekistan> .
+  ex:hasCountry <http://example.org/country/Uzbekistan>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/Uzbekistan> a ex:Country;
+<http://example.org/country/Uzbekistan> a ex:hasCountry;
   ex:countryName "Uzbekistan";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q868> .
 
 <http://example.org/dev/9> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
@@ -109,9 +275,13 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:learnedCodingOnline "Stack Overflow;Written-based Online Courses";
   ex:yearsOfCoding "20";
   ex:devType "Academic researcher";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Lua>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Lua>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Lua> .
 
 <http://example.org/dev/10> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -119,14 +289,22 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;How-to videos";
+  ex:usesTechDoc "Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "11";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Serbia> .
+  ex:hasCountry <http://example.org/country/Serbia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/Serbia> a ex:Country;
+<http://example.org/country/Serbia> a ex:hasCountry;
   ex:countryName "Serbia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q403> .
 
 <http://example.org/dev/11> a ex:Developer;
   ex:hasMainBranch "I used to be a developer by profession, but no longer am";
@@ -134,12 +312,28 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;Video-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "20";
   ex:devType "Project manager";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Ruby>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Crystal>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Ruby>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Ruby>;
   ex:workExperience "15";
   ex:industry "Healthcare";
   ex:hasJobSatisfaction "8" .
+
+<http://example.org/programmingLanguage/Ruby> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Ruby" .
+
+<http://example.org/programmingLanguage/Crystal> a ex:languagesWanted;
+  ex:programmingLanguageName "Crystal" .
 
 <http://example.org/dev/12> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -150,11 +344,34 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "30";
   ex:yearsAsPro "25";
   ex:devType "Developer Advocate";
-  ex:hasCountry <http://example.org/country/Poland> .
+  ex:hasCountry <http://example.org/country/Poland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Delphi>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/Poland> a ex:Country;
+<http://example.org/country/Poland> a ex:hasCountry;
   ex:countryName "Poland";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q36> .
+
+<http://example.org/programmingLanguage/Delphi> a ex:languagesUsed;
+  ex:programmingLanguageName "Delphi" .
+
+<http://example.org/programmingLanguage/VBA> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "VBA" .
+
+<http://example.org/programmingLanguage/Visual%20Basic%20(.Net)> a ex:languagesUsed;
+  ex:programmingLanguageName "Visual Basic (.Net)" .
 
 <http://example.org/dev/13> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -166,6 +383,13 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "12";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/VBA>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/VBA>;
   ex:workExperience "12";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "8" .
@@ -175,13 +399,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:age "35-44 years old";
   ex:hasEmploymentType "Not employed, and not looking for work";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow;Interactive tutorial;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "20";
   ex:devType "Other (please specify):";
-  ex:hasCountry <http://example.org/country/Philippines> .
+  ex:hasCountry <http://example.org/country/Philippines>;
+  ex:languagesUsed <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Python>;
+  ex:embeddedUsed "CMake" .
 
-<http://example.org/country/Philippines> a ex:Country;
+<http://example.org/country/Philippines> a ex:hasCountry;
   ex:countryName "Philippines";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q928> .
 
 <http://example.org/dev/15> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -189,13 +419,17 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Stack Overflow;Coding sessions (live or recorded);How-to videos;Video-based Online Courses";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "10";
-  ex:hasCountry <http://example.org/country/Bulgaria> .
+  ex:hasCountry <http://example.org/country/Bulgaria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++> .
 
-<http://example.org/country/Bulgaria> a ex:Country;
+<http://example.org/country/Bulgaria> a ex:hasCountry;
   ex:countryName "Bulgaria";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q219> .
 
 <http://example.org/dev/16> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -203,26 +437,42 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Video-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s)";
   ex:yearsOfCoding "31";
   ex:yearsAsPro "27";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi";
   ex:workExperience "29";
   ex:industry "Banking/Financial Services";
   ex:hasJobSatisfaction "5" .
 
-<http://example.org/country/Switzerland> a ex:Country;
+<http://example.org/country/Switzerland> a ex:hasCountry;
   ex:countryName "Switzerland";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q39> .
 
 <http://example.org/dev/17> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Primary/elementary school";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Video-based Online Courses;Written-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);Traditional public search engine";
   ex:yearsOfCoding "7";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Canada> .
+  ex:hasCountry <http://example.org/country/Canada>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/TypeScript> .
 
 <http://example.org/dev/18> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -230,14 +480,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Blogs;Coding sessions (live or recorded);How-to videos;Video-based Online Courses;Certification videos";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "3";
   ex:devType "Developer, front-end";
-  ex:hasCountry <http://example.org/country/India> .
+  ex:hasCountry <http://example.org/country/India>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/India> a ex:Country;
+<http://example.org/country/India> a ex:hasCountry;
   ex:countryName "India";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q668> .
 
 <http://example.org/dev/19> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -245,17 +502,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Video-based Online Courses;Written-based Online Courses;AI;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
   ex:yearsOfCoding "12";
   ex:yearsAsPro "10";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "12";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "10" .
 
-<http://example.org/country/Germany> a ex:Country;
+<http://example.org/country/Germany> a ex:hasCountry;
   ex:countryName "Germany";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q183> .
 
 <http://example.org/dev/20> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -263,10 +529,16 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "22";
   ex:yearsAsPro "11";
   ex:devType "Database administrator";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/21> a ex:Developer;
   ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
@@ -274,10 +546,24 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Written Tutorials;Stack Overflow;Interactive tutorial;Video-based Online Courses;Online challenges (e.g., daily or weekly coding challenges)";
   ex:yearsOfCoding "5";
   ex:yearsAsPro "Less than 1 year";
   ex:devType "Other (please specify):";
   ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Arduino;Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi";
   ex:workExperience "10";
   ex:industry "Other:";
   ex:hasJobSatisfaction "6" .
@@ -288,10 +574,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);Traditional public search engine";
   ex:yearsOfCoding "36";
   ex:yearsAsPro "11";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Germany> .
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/23> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -299,17 +596,32 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
   ex:yearsOfCoding "25";
   ex:yearsAsPro "18";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/F#>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/F#>,
+    <http://example.org/programmingLanguage/Go>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/F#>;
   ex:workExperience "18";
   ex:industry "Banking/Financial Services";
   ex:hasJobSatisfaction "9" .
 
-<http://example.org/country/Ireland> a ex:Country;
+<http://example.org/country/Ireland> a ex:hasCountry;
   ex:countryName "Ireland";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q1860> .
+
+<http://example.org/programmingLanguage/F#> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "F#" .
 
 <http://example.org/dev/24> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -317,10 +629,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "44";
   ex:yearsAsPro "37";
   ex:devType "Developer, desktop or enterprise applications";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/25> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -328,17 +651,30 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Student, part-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Blogs;Books;Stack Overflow;Social Media;How-to videos";
   ex:yearsOfCoding "20";
   ex:yearsAsPro "15";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Italy>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Clojure>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Clojure>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Clojure>, <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "16";
   ex:industry "Banking/Financial Services";
   ex:hasJobSatisfaction "4" .
 
-<http://example.org/country/Italy> a ex:Country;
+<http://example.org/country/Italy> a ex:hasCountry;
   ex:countryName "Italy";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q38> .
+
+<http://example.org/programmingLanguage/Clojure> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Clojure" .
+
+<http://example.org/programmingLanguage/Julia> a ex:languagesWanted;
+  ex:programmingLanguageName "Julia" .
 
 <http://example.org/dev/26> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -346,10 +682,17 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Associate degree (A.A., A.S., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;Written-based Online Courses;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "24";
   ex:yearsAsPro "20";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/TypeScript> .
 
 <http://example.org/dev/27> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -361,9 +704,22 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "17";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Italy>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Scala>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Scala>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Scala>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "17";
   ex:industry "Media & Advertising Services";
   ex:hasJobSatisfaction "7" .
+
+<http://example.org/programmingLanguage/Scala> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Scala" .
 
 <http://example.org/dev/28> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -375,13 +731,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "6";
   ex:devType "Cloud infrastructure engineer";
   ex:hasCountry <http://example.org/country/Ukraine>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/TypeScript>, <http://example.org/programmingLanguage/Zig>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi";
   ex:workExperience "6";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
 
-<http://example.org/country/Ukraine> a ex:Country;
+<http://example.org/country/Ukraine> a ex:hasCountry;
   ex:countryName "Ukraine";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q212> .
+
+<http://example.org/programmingLanguage/Zig> a ex:languagesWanted;
+  ex:programmingLanguageName "Zig" .
 
 <http://example.org/dev/29> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -389,10 +758,27 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "18";
   ex:yearsAsPro "12";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/30> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -400,10 +786,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "9";
   ex:yearsAsPro "6";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Philippines> .
+  ex:hasCountry <http://example.org/country/Philippines>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/31> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -413,11 +808,28 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "3";
   ex:yearsAsPro "2";
   ex:devType "Developer, back-end";
-  ex:hasCountry <http://example.org/country/Australia> .
+  ex:hasCountry <http://example.org/country/Australia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Perl>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Arduino;Rasberry Pi";
+  ex:embeddedWanted "Arduino;Rasberry Pi";
+  ex:embeddedAdmired "Arduino;Rasberry Pi" .
 
-<http://example.org/country/Australia> a ex:Country;
+<http://example.org/country/Australia> a ex:hasCountry;
   ex:countryName "Australia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q408> .
+
+<http://example.org/programmingLanguage/Perl> a ex:languagesUsed;
+  ex:programmingLanguageName "Perl" .
 
 <http://example.org/dev/32> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -429,6 +841,16 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "7";
   ex:devType "Other (please specify):";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Scala>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "7";
   ex:industry "Insurance";
   ex:hasJobSatisfaction "7" .
@@ -439,14 +861,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Associate degree (A.A., A.S., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Stack Overflow;How-to videos;Programming Games";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "12";
   ex:yearsAsPro "7";
   ex:devType "Developer, back-end";
-  ex:hasCountry <http://example.org/country/Brazil> .
+  ex:hasCountry <http://example.org/country/Brazil>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/Brazil> a ex:Country;
+<http://example.org/country/Brazil> a ex:hasCountry;
   ex:countryName "Brazil";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q155> .
 
 <http://example.org/dev/34> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -454,26 +888,61 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Stack Overflow;Video-based Online Courses;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s)";
   ex:yearsOfCoding "18";
   ex:yearsAsPro "16";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Japan>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)> .
+
+<http://example.org/country/Japan> a ex:hasCountry;
+  ex:countryName "Japan";
+  owl:sameAs <https://www.wikidata.org/entity/Q17> .
+
+<http://example.org/dev/34> ex:languagesUsed <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Python>;
   ex:workExperience "16";
   ex:industry "Internet, Telecomm or Information Services";
   ex:hasJobSatisfaction "6" .
-
-<http://example.org/country/Japan> a ex:Country;
-  ex:countryName "Japan";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/35> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Stack Overflow;Interactive tutorial;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "5";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/MATLAB>, <http://example.org/programmingLanguage/Perl>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Arduino;Rasberry Pi";
+  ex:embeddedWanted "Arduino;CMake;Rasberry Pi";
+  ex:embeddedAdmired "Arduino;Rasberry Pi" .
+
+<http://example.org/programmingLanguage/MATLAB> a ex:languagesUsed;
+  ex:programmingLanguageName "MATLAB" .
+
+<http://example.org/programmingLanguage/Dart> a ex:languagesWanted, ex:languagesUsed,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Dart" .
 
 <http://example.org/dev/36> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -481,10 +950,23 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Social Media;How-to videos;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository";
   ex:yearsOfCoding "10";
   ex:yearsAsPro "6";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "6";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
@@ -498,11 +980,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "9";
   ex:yearsAsPro "8";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Austria> .
+  ex:hasCountry <http://example.org/country/Austria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/OCaml>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/SQL> .
 
-<http://example.org/country/Austria> a ex:Country;
+<http://example.org/country/Austria> a ex:hasCountry;
   ex:countryName "Austria";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q40> .
+
+<http://example.org/programmingLanguage/OCaml> a ex:languagesUsed, ex:languagesWanted;
+  ex:programmingLanguageName "OCaml" .
 
 <http://example.org/dev/38> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -513,11 +1005,14 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "10";
   ex:yearsAsPro "6";
   ex:devType "Data scientist or machine learning specialist";
-  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Python> .
 
-<http://example.org/country/Iran,%20Islamic%20Republic%20of...> a ex:Country;
+<http://example.org/country/Iran,%20Islamic%20Republic%20of...> a ex:hasCountry;
   ex:countryName "Iran, Islamic Republic of...";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q794> .
 
 <http://example.org/dev/39> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -528,25 +1023,56 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "8";
   ex:yearsAsPro "7";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/France> .
+  ex:hasCountry <http://example.org/country/France>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/France> a ex:Country;
+<http://example.org/country/France> a ex:hasCountry;
   ex:countryName "France";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q6256> .
 
 <http://example.org/dev/40> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI;Online challenges (e.g., daily or weekly coding challenges);Other (Please specify):";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "1";
   ex:yearsAsPro "Less than 1 year";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Saudi%20Arabia> .
+  ex:hasCountry <http://example.org/country/Saudi%20Arabia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Dart>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/Solidity>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript> .
 
-<http://example.org/country/Saudi%20Arabia> a ex:Country;
+<http://example.org/country/Saudi%20Arabia> a ex:hasCountry;
   ex:countryName "Saudi Arabia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q848> .
+
+<http://example.org/programmingLanguage/Assembly> a ex:languagesWanted, ex:languagesUsed,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Assembly" .
+
+<http://example.org/programmingLanguage/Solidity> a ex:languagesWanted;
+  ex:programmingLanguageName "Solidity" .
 
 <http://example.org/dev/41> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -554,13 +1080,25 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
   ex:yearsOfCoding "9";
   ex:yearsAsPro "7";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Brazil>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Ruby>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Elixir>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "7";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
+
+<http://example.org/programmingLanguage/Elixir> a ex:languagesWanted;
+  ex:programmingLanguageName "Elixir" .
 
 <http://example.org/dev/42> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -568,10 +1106,14 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Written Tutorials;Stack Overflow;AI";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "12";
   ex:devType "Research & Development role";
   ex:hasCountry <http://example.org/country/Italy>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Go>;
   ex:workExperience "16";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
@@ -582,10 +1124,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "22";
   ex:yearsAsPro "15";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Ireland> .
+  ex:hasCountry <http://example.org/country/Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Cobol>,
+    <http://example.org/programmingLanguage/Fortran>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Zig>;
+  ex:embeddedUsed "Rasberry Pi" .
+
+<http://example.org/programmingLanguage/Cobol> a ex:languagesWanted;
+  ex:programmingLanguageName "Cobol" .
+
+<http://example.org/programmingLanguage/Fortran> a ex:languagesWanted, ex:languagesUsed;
+  ex:programmingLanguageName "Fortran" .
 
 <http://example.org/dev/44> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -597,6 +1155,22 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "14";
   ex:devType "Academic researcher";
   ex:hasCountry <http://example.org/country/Austria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/MATLAB>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "CMake;MSVC";
+  ex:embeddedWanted "MSVC";
+  ex:embeddedAdmired "MSVC";
   ex:workExperience "14";
   ex:industry "Higher Education";
   ex:hasJobSatisfaction "9" .
@@ -607,17 +1181,28 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;How-to videos;Video-based Online Courses;Written-based Online Courses;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s)";
   ex:yearsOfCoding "10";
   ex:yearsAsPro "7";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Romania>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "3";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "9" .
 
-<http://example.org/country/Romania> a ex:Country;
+<http://example.org/country/Romania> a ex:hasCountry;
   ex:countryName "Romania";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q218> .
 
 <http://example.org/dev/46> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -625,12 +1210,24 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Student, part-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Books;Stack Overflow;Video-based Online Courses";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "4";
   ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Fortran>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Julia>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Dart>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Dart>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "6";
   ex:industry "Energy";
   ex:hasJobSatisfaction "7" .
+
+<http://example.org/programmingLanguage/Julia> a ex:languagesUsed, ex:languagesAdmired .
 
 <http://example.org/dev/47> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -638,10 +1235,18 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "20";
   ex:yearsAsPro "15";
   ex:devType "Developer, embedded applications or devices";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>;
+  ex:embeddedUsed "CMake;GNU GCC;LLVM's Clang;MSVC;Ninja";
+  ex:embeddedWanted "CMake;GNU GCC;LLVM's Clang";
+  ex:embeddedAdmired "CMake;GNU GCC;LLVM's Clang";
   ex:workExperience "15";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "6" .
@@ -652,10 +1257,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, part-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:learnedCodingOnline "Books;Coding sessions (live or recorded);Written-based Online Courses";
   ex:yearsOfCoding "25";
   ex:yearsAsPro "15";
   ex:devType "System administrator";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Crystal>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/Ruby>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Crystal>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/Ruby>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Crystal>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/Ruby>;
+  ex:embeddedUsed "LLVM's Clang";
+  ex:embeddedWanted "Arduino;Rasberry Pi" .
+
+<http://example.org/programmingLanguage/Crystal> a ex:languagesUsed, ex:languagesAdmired .
 
 <http://example.org/dev/49> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -663,10 +1279,18 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "More than 50 years";
   ex:yearsAsPro "45";
   ex:devType "Developer, desktop or enterprise applications";
-  ex:hasCountry <http://example.org/country/Germany> .
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Delphi>, <http://example.org/programmingLanguage/Fortran>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Delphi>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Delphi>, <http://example.org/programmingLanguage/SQL> .
+
+<http://example.org/programmingLanguage/Delphi> a ex:languagesWanted, ex:languagesAdmired .
 
 <http://example.org/dev/50> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -674,10 +1298,17 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
   ex:yearsOfCoding "11";
   ex:yearsAsPro "4";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>;
   ex:workExperience "4";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "3" .
@@ -687,10 +1318,23 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow;Social Media;How-to videos;Video-based Online Courses";
+  ex:usesTechDoc "User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "Less than 1 year";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust> .
 
 <http://example.org/dev/52> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -698,10 +1342,31 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Student, full-time;Employed, part-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "8";
   ex:yearsAsPro "3";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>, <http://example.org/programmingLanguage/VBA>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "LLVM's Clang";
+  ex:embeddedWanted "Arduino;LLVM's Clang;Rasberry Pi";
+  ex:embeddedAdmired "LLVM's Clang" .
 
 <http://example.org/dev/53> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -709,10 +1374,24 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Student, part-time;Employed, part-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "7";
   ex:yearsAsPro "1";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Germany> .
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Rasberry Pi" .
 
 <http://example.org/dev/54> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -724,6 +1403,12 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "6";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Bulgaria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "6";
   ex:industry "Fintech";
   ex:hasJobSatisfaction "3" .
@@ -734,13 +1419,30 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Social Media;Programming Games";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "18";
   ex:yearsAsPro "8";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "CMake;Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi";
   ex:workExperience "8";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
+
+<http://example.org/programmingLanguage/Kotlin> a ex:languagesUsed .
 
 <http://example.org/dev/56> a ex:Developer;
   ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
@@ -748,19 +1450,37 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Video-based Online Courses;Written-based Online Courses;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
   ex:yearsOfCoding "29";
   ex:yearsAsPro "24";
   ex:devType "Other (please specify):";
-  ex:hasCountry <http://example.org/country/Germany> .
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/OCaml>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/Zig>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/57> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "I prefer not to say";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;How-to videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s)";
   ex:yearsOfCoding "4";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Italy> .
+  ex:hasCountry <http://example.org/country/Italy>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Lua>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Lua>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Lua> .
 
 <http://example.org/dev/58> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -768,36 +1488,65 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Video-based Online Courses;Written-based Online Courses;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "2";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Turkey>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Python>;
   ex:workExperience "1";
   ex:industry "Other:";
   ex:hasJobSatisfaction "6" .
 
-<http://example.org/country/Turkey> a ex:Country;
+<http://example.org/country/Turkey> a ex:hasCountry;
   ex:countryName "Turkey";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q43> .
 
 <http://example.org/dev/59> a ex:Developer;
   ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Video-based Online Courses";
   ex:yearsOfCoding "4";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/India> .
+  ex:hasCountry <http://example.org/country/India>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:embeddedUsed "Arduino";
+  ex:embeddedWanted "Arduino";
+  ex:embeddedAdmired "Arduino" .
 
 <http://example.org/dev/60> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
   ex:hasEmploymentType "Not employed, but looking for work";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;How-to videos;Video-based Online Courses;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
   ex:yearsOfCoding "11";
   ex:yearsAsPro "6";
   ex:devType "Developer, back-end";
-  ex:hasCountry <http://example.org/country/Ireland> .
+  ex:hasCountry <http://example.org/country/Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/61> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
@@ -807,11 +1556,36 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
   ex:yearsOfCoding "5";
   ex:devType "Other (please specify):";
-  ex:hasCountry <http://example.org/country/Nepal> .
+  ex:hasCountry <http://example.org/country/Nepal>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/Lisp>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/Prolog>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Julia>, <http://example.org/programmingLanguage/Lisp>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/Zig>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Julia>, <http://example.org/programmingLanguage/Lisp>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Arduino;CMake;Cargo;GNU GCC;LLVM's Clang;QMake";
+  ex:embeddedWanted "Arduino;CMake;Cargo;GNU GCC;LLVM's Clang";
+  ex:embeddedAdmired "Arduino;CMake;Cargo;GNU GCC;LLVM's Clang" .
 
-<http://example.org/country/Nepal> a ex:Country;
+<http://example.org/country/Nepal> a ex:hasCountry;
   ex:countryName "Nepal";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q156> .
+
+<http://example.org/programmingLanguage/Lisp> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Lisp" .
+
+<http://example.org/programmingLanguage/Prolog> a ex:languagesUsed;
+  ex:programmingLanguageName "Prolog" .
 
 <http://example.org/dev/62> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -819,10 +1593,17 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Blogs;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Video-based Online Courses;Written-based Online Courses";
   ex:yearsOfCoding "40";
   ex:yearsAsPro "29";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "29";
   ex:industry "Higher Education";
   ex:hasJobSatisfaction "7" .
@@ -832,13 +1613,20 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, part-time";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Stack Overflow;Social Media;Interactive tutorial;Written-based Online Courses;AI;Other (Please specify):";
   ex:yearsOfCoding "5";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Algeria> .
+  ex:hasCountry <http://example.org/country/Algeria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript> .
 
-<http://example.org/country/Algeria> a ex:Country;
+<http://example.org/country/Algeria> a ex:hasCountry;
   ex:countryName "Algeria";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q262> .
 
 <http://example.org/dev/64> a ex:Developer;
   ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
@@ -846,10 +1634,16 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Interactive tutorial;Written-based Online Courses;Certification videos;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "5";
   ex:yearsAsPro "5";
   ex:devType "DevOps specialist";
   ex:hasCountry <http://example.org/country/Bulgaria>;
+  ex:languagesUsed <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Ruby>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Ruby>, <http://example.org/programmingLanguage/Rust>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Ruby>;
   ex:workExperience "9";
   ex:industry "Banking/Financial Services";
   ex:hasJobSatisfaction "9" .
@@ -863,33 +1657,67 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "39";
   ex:devType "Engineering manager";
   ex:hasCountry <http://example.org/country/Sweden>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Java>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Java>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Java>;
   ex:workExperience "27";
   ex:industry "Banking/Financial Services";
   ex:hasJobSatisfaction "9" .
 
-<http://example.org/country/Sweden> a ex:Country;
+<http://example.org/country/Sweden> a ex:hasCountry;
   ex:countryName "Sweden";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q34> .
 
 <http://example.org/dev/66> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Blogs;Written Tutorials;Stack Overflow;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "1";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Kotlin>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>;
+  ex:embeddedUsed "GNU GCC;LLVM's Clang;MSVC;Ninja";
+  ex:embeddedWanted "GNU GCC;LLVM's Clang";
+  ex:embeddedAdmired "GNU GCC;LLVM's Clang" .
 
 <http://example.org/dev/67> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Stack Overflow;How-to videos;Video-based Online Courses;AI;Online challenges (e.g., daily or weekly coding challenges)";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "Less than 1 year";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Switzerland> .
+  ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Haskell>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/Haskell>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Haskell>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Arduino;CMake;GNU GCC;LLVM's Clang" .
+
+<http://example.org/programmingLanguage/Haskell> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Haskell" .
 
 <http://example.org/dev/68> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -898,21 +1726,53 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Dart>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#> .
 
 <http://example.org/dev/69> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
   ex:hasEmploymentType "Not employed, but looking for work";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "15";
-  ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Netherlands> .
+  ex:devType "Developer, full-stack" .
 
-<http://example.org/country/Netherlands> a ex:Country;
+<http://example.org/country/Netherlands> a ex:hasCountry;
   ex:countryName "Netherlands";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q55> .
+
+<http://example.org/dev/69> ex:hasCountry <http://example.org/country/Netherlands>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Perl>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Perl>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Perl>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Arduino;Rasberry Pi";
+  ex:embeddedWanted "Arduino;Rasberry Pi";
+  ex:embeddedAdmired "Arduino;Rasberry Pi" .
+
+<http://example.org/programmingLanguage/Perl> a ex:languagesWanted, ex:languagesAdmired .
+
+<http://example.org/programmingLanguage/Kotlin> a ex:languagesAdmired .
 
 <http://example.org/dev/70> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -924,19 +1784,30 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "8";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Croatia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Arduino";
+  ex:embeddedWanted "Arduino";
+  ex:embeddedAdmired "Arduino";
   ex:workExperience "10";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "9" .
 
-<http://example.org/country/Croatia> a ex:Country;
+<http://example.org/country/Croatia> a ex:hasCountry;
   ex:countryName "Croatia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q224> .
 
 <http://example.org/dev/71> a ex:Developer;
   ex:hasMainBranch "I used to be a developer by profession, but no longer am";
   ex:age "35-44 years old";
   ex:hasEmploymentType "Not employed, and not looking for work";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Interactive tutorial";
   ex:yearsOfCoding "2";
   ex:hasCountry <http://example.org/country/Australia> .
 
@@ -946,10 +1817,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;How-to videos;Video-based Online Courses;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "30";
   ex:yearsAsPro "30";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Sweden>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "31";
   ex:industry "Retail and Consumer Services";
   ex:hasJobSatisfaction "7" .
@@ -960,6 +1840,8 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Student, full-time;Independent contractor, freelancer, or self-employed;Employed, part-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
   ex:yearsOfCoding "3";
   ex:yearsAsPro "1";
   ex:devType "Data scientist or machine learning specialist";
@@ -967,13 +1849,22 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasCountry <http://example.org/country/Pakistan>;
   ex:usesCurrency """PKR	Pakistani rupee""";
   ex:compensation "2040000";
+  ex:languagesUsed <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/Scala>;
+  ex:embeddedUsed "CMake";
   ex:workExperience "3";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "10" .
 
-<http://example.org/country/Pakistan> a ex:Country;
+<http://example.org/country/Pakistan> a ex:hasCountry;
   ex:countryName "Pakistan";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q1860> .
 
 <http://example.org/dev/74> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -981,17 +1872,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Video-based Online Courses;Written-based Online Courses;AI;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "24";
   ex:yearsAsPro "10";
   ex:devType "Developer, desktop or enterprise applications";
   ex:hasCountry <http://example.org/country/Czech%20Republic>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/R>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C++>;
+  ex:embeddedUsed "CMake;MSVC";
+  ex:embeddedWanted "CMake;MSVC";
+  ex:embeddedAdmired "CMake;MSVC";
   ex:workExperience "1";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "9" .
 
-<http://example.org/country/Czech%20Republic> a ex:Country;
+<http://example.org/country/Czech%20Republic> a ex:hasCountry;
   ex:countryName "Czech Republic";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q213> .
 
 <http://example.org/dev/75> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -999,13 +1899,69 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Social Media;Interactive tutorial;Written-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "40";
   ex:yearsAsPro "30";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Ada>, <http://example.org/programmingLanguage/Assembly>,
+    <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>, <http://example.org/programmingLanguage/C>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Clojure>,
+    <http://example.org/programmingLanguage/Crystal>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Elixir>, <http://example.org/programmingLanguage/Erlang>,
+    <http://example.org/programmingLanguage/Fortran>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Groovy>, <http://example.org/programmingLanguage/Haskell>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Julia>,
+    <http://example.org/programmingLanguage/Kotlin>, <http://example.org/programmingLanguage/Lisp>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/OCaml>,
+    <http://example.org/programmingLanguage/Perl>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/R>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/Scala>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>,
+    <http://example.org/programmingLanguage/Zig>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Clojure>,
+    <http://example.org/programmingLanguage/Elixir>, <http://example.org/programmingLanguage/Erlang>,
+    <http://example.org/programmingLanguage/Fortran>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/OCaml>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/Scala>, <http://example.org/programmingLanguage/Zig>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Clojure>,
+    <http://example.org/programmingLanguage/Elixir>, <http://example.org/programmingLanguage/Erlang>,
+    <http://example.org/programmingLanguage/Fortran>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/OCaml>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/R>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/Scala>, <http://example.org/programmingLanguage/Zig>;
+  ex:embeddedUsed "Boost.Test;Catch2;CMake;Cargo;doctest;GNU GCC;LLVM's Clang;MSVC;Ninja";
+  ex:embeddedWanted "Catch2;CMake;Cargo;doctest;GNU GCC;LLVM's Clang;Ninja";
+  ex:embeddedAdmired "Catch2;CMake;Cargo;doctest;GNU GCC;LLVM's Clang;Ninja";
   ex:workExperience "35";
   ex:industry "Manufacturing";
   ex:hasJobSatisfaction "7" .
+
+<http://example.org/programmingLanguage/Ada> a ex:languagesUsed;
+  ex:programmingLanguageName "Ada" .
+
+<http://example.org/programmingLanguage/Elixir> a ex:languagesUsed, ex:languagesAdmired .
+
+<http://example.org/programmingLanguage/Erlang> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Erlang" .
+
+<http://example.org/programmingLanguage/Groovy> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "Groovy" .
+
+<http://example.org/programmingLanguage/Zig> a ex:languagesUsed, ex:languagesAdmired .
+
+<http://example.org/programmingLanguage/Fortran> a ex:languagesAdmired .
+
+<http://example.org/programmingLanguage/OCaml> a ex:languagesAdmired .
 
 <http://example.org/dev/76> a ex:Developer;
   ex:hasMainBranch "I am learning to code";
@@ -1014,7 +1970,10 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEducationLevel "Some college/university study without earning a degree";
   ex:yearsOfCoding "4";
   ex:devType "Designer";
-  ex:hasCountry <http://example.org/country/India> .
+  ex:hasCountry <http://example.org/country/India>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Dart>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/Swift> .
 
 <http://example.org/dev/77> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1022,10 +1981,21 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos;Video-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "31";
   ex:yearsAsPro "25";
   ex:devType "Database administrator";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Groovy>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Groovy>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Groovy>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>;
   ex:workExperience "25";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "6" .
@@ -1036,17 +2006,33 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Student, part-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Video-based Online Courses;AI;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "10";
   ex:yearsAsPro "5";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Republic%20of%20North%20Macedonia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Dart>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:embeddedUsed "Arduino;CMake;GNU GCC";
+  ex:embeddedWanted "Arduino;CMake;GNU GCC;QMake";
+  ex:embeddedAdmired "Arduino;CMake;GNU GCC";
   ex:workExperience "5";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
 
-<http://example.org/country/Republic%20of%20North%20Macedonia> a ex:Country;
+<http://example.org/country/Republic%20of%20North%20Macedonia> a ex:hasCountry;
   ex:countryName "Republic of North Macedonia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q213> .
 
 <http://example.org/dev/79> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1054,10 +2040,23 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Stack Overflow;Social Media;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "30";
   ex:yearsAsPro "24";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Kotlin>, <http://example.org/programmingLanguage/Perl>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/Python>;
   ex:workExperience "28";
   ex:industry "Government";
   ex:hasJobSatisfaction "8" .
@@ -1068,10 +2067,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos;Video-based Online Courses;AI;Online challenges (e.g., daily or weekly coding challenges);Programming Games";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "42";
   ex:yearsAsPro "26";
   ex:devType "Engineering manager";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/F#>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "26";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "8" .
@@ -1082,10 +2090,17 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Interactive tutorial";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "20";
   ex:yearsAsPro "10";
   ex:devType "Developer, desktop or enterprise applications";
   ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Rust>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/PowerShell>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/PowerShell>;
   ex:workExperience "10";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
@@ -1096,17 +2111,28 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Video-based Online Courses;Certification videos";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "12";
   ex:yearsAsPro "9";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Finland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "13";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
 
-<http://example.org/country/Finland> a ex:Country;
+<http://example.org/country/Finland> a ex:hasCountry;
   ex:countryName "Finland";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q33> .
 
 <http://example.org/dev/83> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1114,18 +2140,25 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time;Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;Social Media;How-to videos;Video-based Online Courses;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository";
   ex:yearsOfCoding "34";
   ex:yearsAsPro "20";
-  ex:devType "DevOps specialist" .
-
-<http://example.org/country/Slovakia> a ex:Country;
-  ex:countryName "Slovakia";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
-
-<http://example.org/dev/83> ex:hasCountry <http://example.org/country/Slovakia>;
+  ex:devType "DevOps specialist";
+  ex:hasCountry <http://example.org/country/Slovakia>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/Python>;
+  ex:embeddedUsed "GNU GCC;LLVM's Clang;Rasberry Pi";
+  ex:embeddedWanted "GNU GCC;LLVM's Clang;Rasberry Pi";
+  ex:embeddedAdmired "GNU GCC;LLVM's Clang;Rasberry Pi";
   ex:workExperience "30";
   ex:industry "Computer Systems Design and Services";
   ex:hasJobSatisfaction "4" .
+
+<http://example.org/country/Slovakia> a ex:hasCountry;
+  ex:countryName "Slovakia";
+  owl:sameAs <https://www.wikidata.org/entity/Q214> .
 
 <http://example.org/dev/84> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1133,10 +2166,18 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Other (Please specify):";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "4";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Poland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Rust>;
+  ex:embeddedUsed "CMake;GNU GCC;Ninja";
   ex:workExperience "5";
   ex:industry "Internet, Telecomm or Information Services";
   ex:hasJobSatisfaction "2" .
@@ -1146,19 +2187,39 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:age "25-34 years old";
   ex:hasEmploymentType "Not employed, but looking for work";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos;Online challenges (e.g., daily or weekly coding challenges)";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "19";
   ex:yearsAsPro "12";
   ex:devType "Developer, desktop or enterprise applications";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Kotlin>, <http://example.org/programmingLanguage/Lua>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Kotlin>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/86> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
   ex:age "18-24 years old";
   ex:hasEmploymentType "Not employed, and not looking for work";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Stack Overflow;Social Media;How-to videos;Video-based Online Courses";
+  ex:usesTechDoc "User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "4";
   ex:devType "Other (please specify):";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Cobol>, <http://example.org/programmingLanguage/Fortran>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/SQL> .
 
 <http://example.org/dev/87> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1170,6 +2231,20 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "29";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PowerShell>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
   ex:workExperience "29";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "8" .
@@ -1180,10 +2255,16 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos;Interactive tutorial;Written-based Online Courses";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository";
   ex:yearsOfCoding "12";
   ex:yearsAsPro "9";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Germany> .
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:languagesUsed <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Rust>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Rust>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Rust> .
 
 <http://example.org/dev/89> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1191,10 +2272,22 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Books;Written Tutorials;Stack Overflow";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "20";
   ex:yearsAsPro "20";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/SQL>,
+    <http://example.org/programmingLanguage/VBA>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)> .
+
+<http://example.org/programmingLanguage/Visual%20Basic%20(.Net)> a ex:languagesWanted,
+    ex:languagesAdmired .
 
 <http://example.org/dev/90> a ex:Developer;
   ex:hasMainBranch "I am learning to code";
@@ -1205,6 +2298,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "2";
   ex:devType "Security professional";
   ex:hasCountry <http://example.org/country/India>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesWanted <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/Visual%20Basic%20(.Net)>;
+  ex:embeddedUsed "Rasberry Pi";
+  ex:embeddedWanted "Rasberry Pi";
+  ex:embeddedAdmired "Rasberry Pi";
   ex:workExperience "3";
   ex:industry "Higher Education";
   ex:hasJobSatisfaction "8" .
@@ -1216,20 +2322,38 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEducationLevel "Some college/university study without earning a degree";
   ex:yearsOfCoding "2";
   ex:devType "Designer";
-  ex:hasCountry <http://example.org/country/Russian%20Federation> .
+  ex:hasCountry <http://example.org/country/Russian%20Federation>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Python>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Python>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Python> .
 
-<http://example.org/country/Russian%20Federation> a ex:Country;
+<http://example.org/country/Russian%20Federation> a ex:hasCountry;
   ex:countryName "Russian Federation";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q159> .
 
 <http://example.org/dev/92> a ex:Developer;
   ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Primary/elementary school";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "7";
   ex:devType "Student";
-  ex:hasCountry <http://example.org/country/Poland> .
+  ex:hasCountry <http://example.org/country/Poland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Rust>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Rust>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Rust>;
+  ex:embeddedUsed "CMake;Cargo;GNU GCC;LLVM's Clang;MSVC;Rasberry Pi";
+  ex:embeddedWanted "Cargo;GNU GCC;LLVM's Clang;Rasberry Pi";
+  ex:embeddedAdmired "Cargo;GNU GCC;LLVM's Clang;Rasberry Pi" .
 
 <http://example.org/dev/93> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1237,10 +2361,20 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;Social Media";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository";
   ex:yearsOfCoding "40";
   ex:yearsAsPro "37";
   ex:devType "Senior Executive (C-Suite, VP, etc.)";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Groovy>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:embeddedUsed "Arduino;Rasberry Pi";
+  ex:embeddedWanted "Arduino;Rasberry Pi";
+  ex:embeddedAdmired "Arduino;Rasberry Pi";
   ex:workExperience "37";
   ex:industry "Computer Systems Design and Services";
   ex:hasJobSatisfaction "4" .
@@ -1251,22 +2385,44 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Blogs;Books;Written Tutorials;Stack Overflow;Social Media";
   ex:yearsOfCoding "10";
   ex:yearsAsPro "4";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/GDScript>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PHP>;
+  ex:languagesWanted <http://example.org/programmingLanguage/GDScript>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Rust>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/GDScript>, <http://example.org/programmingLanguage/JavaScript>;
   ex:workExperience "4";
   ex:industry "Transportation, or Supply Chain";
   ex:hasJobSatisfaction "6" .
+
+<http://example.org/programmingLanguage/GDScript> a ex:languagesUsed, ex:languagesWanted,
+    ex:languagesAdmired;
+  ex:programmingLanguageName "GDScript" .
 
 <http://example.org/dev/95> a ex:Developer;
   ex:hasMainBranch "I am learning to code";
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, part-time";
   ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:learnedCodingOnline "Technical documentation;Blogs;Written Tutorials;Stack Overflow;How-to videos;Written-based Online Courses;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s)";
   ex:yearsOfCoding "4";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/C>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/PowerShell> .
 
 <http://example.org/dev/96> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1274,17 +2430,26 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "In-person";
   ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;How-to videos;AI";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
   ex:yearsOfCoding "6";
   ex:yearsAsPro "2";
   ex:devType "Developer, full-stack";
   ex:hasCountry <http://example.org/country/Greece>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/PHP>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/PHP>,
+    <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "6";
   ex:industry "Higher Education";
   ex:hasJobSatisfaction "3" .
 
-<http://example.org/country/Greece> a ex:Country;
+<http://example.org/country/Greece> a ex:hasCountry;
   ex:countryName "Greece";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q41> .
 
 <http://example.org/dev/97> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1296,6 +2461,8 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsAsPro "7";
   ex:devType "Developer, mobile";
   ex:hasCountry <http://example.org/country/India>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>;
   ex:workExperience "7";
   ex:industry "Software Development";
   ex:hasJobSatisfaction "7" .
@@ -1309,7 +2476,10 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:yearsOfCoding "37";
   ex:yearsAsPro "33";
   ex:devType "Developer, full-stack";
-  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/Python> .
 
 <http://example.org/dev/99> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1317,10 +2487,16 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Hybrid (some remote, some in-person)";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI;Certification videos;Online challenges (e.g., daily or weekly coding challenges);Programming Games";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);First-party knowledge base;Traditional public search engine;AI-powered search/dev tool (free)";
   ex:yearsOfCoding "4";
   ex:yearsAsPro "1";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/Italy>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/PowerShell>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/C#>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>;
   ex:workExperience "1";
   ex:industry "Transportation, or Supply Chain";
   ex:hasJobSatisfaction "8" .
@@ -1330,13 +2506,32 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:age "Under 18 years old";
   ex:hasEmploymentType "Student, full-time";
   ex:hasEducationLevel "Primary/elementary school";
+  ex:learnedCodingOnline "Technical documentation;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Online challenges (e.g., daily or weekly coding challenges);Programming Games";
+  ex:usesTechDoc "API document(s) and/or SDK document(s);First-party knowledge base;Traditional public search engine";
   ex:yearsOfCoding "2";
   ex:devType "Developer, game or graphics";
-  ex:hasCountry <http://example.org/country/Israel> .
+  ex:hasCountry <http://example.org/country/Israel>;
+  ex:languagesUsed <http://example.org/programmingLanguage/C>, <http://example.org/programmingLanguage/C#>,
+    <http://example.org/programmingLanguage/C++>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/Ruby>,
+    <http://example.org/programmingLanguage/SQL>, <http://example.org/programmingLanguage/TypeScript>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Assembly>, <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/HTML/CSS>,
+    <http://example.org/programmingLanguage/Java>, <http://example.org/programmingLanguage/JavaScript>,
+    <http://example.org/programmingLanguage/Lua>, <http://example.org/programmingLanguage/Python>,
+    <http://example.org/programmingLanguage/Swift>, <http://example.org/programmingLanguage/Zig>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/C#>, <http://example.org/programmingLanguage/C++>,
+    <http://example.org/programmingLanguage/HTML/CSS>, <http://example.org/programmingLanguage/Java>,
+    <http://example.org/programmingLanguage/JavaScript>, <http://example.org/programmingLanguage/Python>;
+  ex:embeddedUsed "CMake;GNU GCC";
+  ex:embeddedWanted "CMake;GNU GCC;Rasberry Pi";
+  ex:embeddedAdmired "CMake;GNU GCC" .
 
-<http://example.org/country/Israel> a ex:Country;
+<http://example.org/country/Israel> a ex:hasCountry;
   ex:countryName "Israel";
-  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+  owl:sameAs <https://www.wikidata.org/entity/Q801> .
 
 <http://example.org/dev/101> a ex:Developer;
   ex:hasMainBranch "I am a developer by profession";
@@ -1344,10 +2539,19 @@ ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
   ex:hasEmploymentType "Employed, full-time";
   ex:remoteWork "Remote";
   ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:learnedCodingOnline "Technical documentation;Books;Coding sessions (live or recorded);How-to videos;Video-based Online Courses;Written-based Online Courses";
+  ex:usesTechDoc "First-party knowledge base";
   ex:yearsOfCoding "15";
   ex:yearsAsPro "11";
   ex:devType "Developer, back-end";
   ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:languagesUsed <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesWanted <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Dart>, <http://example.org/programmingLanguage/Go>,
+    <http://example.org/programmingLanguage/Rust>, <http://example.org/programmingLanguage/SQL>;
+  ex:languagesAdmired <http://example.org/programmingLanguage/Bash/Shell%20(all%20shells)>,
+    <http://example.org/programmingLanguage/Go>, <http://example.org/programmingLanguage/SQL>;
   ex:workExperience "10";
   ex:industry "Fintech";
   ex:hasJobSatisfaction "2" .
