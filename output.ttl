@@ -1,0 +1,801 @@
+@prefix ex: <http://example.org/> .
+
+<http://example.org/dev/1> a ex:Developer;
+  ex:age "Under 18 years old";
+  ex:compensation "NA";
+  ex:devType "NA";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Hobby";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "NA";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "United States of America";
+  ex:workExperience "NA";
+  ex:yearsAsPro "NA";
+  ex:yearsOfCoding "NA" .
+
+<http://example.org/dev/2> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "Developer";
+  ex:devType " videos";
+  ex:hasCountry "20";
+  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Other (please specify):";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Agree";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "17";
+  ex:workExperience "NA";
+  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/3> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media";
+  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:hasCountry " College";
+  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Other (please specify):";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " etc)";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " MBA" .
+
+<http://example.org/dev/4> a ex:Developer;
+  ex:age "18-24 years old";
+  ex:compensation "Developer";
+  ex:devType " online community);School (i.e.";
+  ex:hasCountry "4";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " University";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "Learning about a codebase;Project planning;Writing code;Documenting code;Debugging and getting help;Deployment and monitoring;Search for answers;Generating content or synthetic data";
+  ex:yearsAsPro " forum";
+  ex:yearsOfCoding " blogs" .
+
+<http://example.org/dev/5> a ex:Developer;
+  ex:age "18-24 years old";
+  ex:compensation " full-stack";
+  ex:devType " blogs";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " forum";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "Developer";
+  ex:workExperience "NA";
+  ex:yearsAsPro " videos";
+  ex:yearsOfCoding "Other online resources (e.g." .
+
+<http://example.org/dev/6> a ex:Developer;
+  ex:age "Under 18 years old";
+  ex:compensation "NA";
+  ex:devType "NA";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "NA";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " etc);Online Courses or Certification";
+  ex:yearsOfCoding " College" .
+
+<http://example.org/dev/7> a ex:Developer;
+  ex:age " but I write code sometimes as part of my work/studies";
+  ex:compensation "7";
+  ex:devType " etc.)";
+  ex:hasCountry "Technical documentation;Stack Overflow;Written-based Online Courses";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "35-44 years old";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "Other online resources (e.g.";
+  ex:remoteWork "Employed";
+  ex:usesCurrency "NA";
+  ex:workExperience "NA";
+  ex:yearsAsPro " Ed.D";
+  ex:yearsOfCoding " Ph.D" .
+
+<http://example.org/dev/8> a ex:Developer;
+  ex:age "18-24 years old";
+  ex:compensation "Student";
+  ex:devType " videos";
+  ex:hasCountry "1";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time;Not employed";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro "Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/9> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "NA";
+  ex:devType "Books / Physical media;Other online resources (e.g.";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Hobby";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "20";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " Ed.D" .
+
+<http://example.org/dev/10> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation " etc)";
+  ex:devType " etc.)";
+  ex:hasCountry " University";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "On the job training;Other online resources (e.g.";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency " College";
+  ex:workExperience "Neither trust nor distrust";
+  ex:yearsAsPro " MBA";
+  ex:yearsOfCoding " M.Eng." .
+
+<http://example.org/dev/11> a ex:Developer;
+  ex:age " but no longer am";
+  ex:compensation "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;Video-based Online Courses";
+  ex:devType "Books / Physical media;Other online resources (e.g.";
+  ex:hasCountry " College";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "35-44 years old";
+  ex:hasJobSatisfaction "Cloud only (single or multi-cloud)";
+  ex:industry "Agree";
+  ex:orgSize " videos";
+  ex:remoteWork "Employed";
+  ex:usesCurrency " etc)";
+  ex:workExperience "Learning about a codebase;Writing code;Documenting code;Debugging and getting help;Search for answers";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/12> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "Developer Advocate";
+  ex:devType "Books / Physical media;School (i.e.";
+  ex:hasCountry "30";
+  ex:hasEducationLevel "Hobby;School or academic work";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " University";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "25";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " Ed.D" .
+
+<http://example.org/dev/13> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "Developer";
+  ex:devType "Books / Physical media;On the job training;School (i.e.";
+  ex:hasCountry "20";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Agree";
+  ex:orgSize " University";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "12";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/14> a ex:Developer;
+  ex:age " but no longer am";
+  ex:compensation "NA";
+  ex:devType "Colleague;Other online resources (e.g.";
+  ex:hasCountry "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine;AI-powered search/dev tool (free)";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "35-44 years old";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork "Not employed";
+  ex:usesCurrency "20";
+  ex:workExperience "Learning about a codebase";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/15> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "15";
+  ex:devType " etc.)";
+  ex:hasCountry "Stack Overflow;Coding sessions (live or recorded);How-to videos;Video-based Online Courses";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "Books / Physical media;Other online resources (e.g.";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "NA";
+  ex:yearsAsPro " MBA";
+  ex:yearsOfCoding " M.Eng." .
+
+<http://example.org/dev/16> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "NA";
+  ex:devType " forum";
+  ex:hasCountry "Developer";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "1-2 times a week";
+  ex:orgSize " online community);Online Courses or Certification";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " full-stack";
+  ex:workExperience "NA";
+  ex:yearsAsPro " blogs";
+  ex:yearsOfCoding " videos" .
+
+<http://example.org/dev/17> a ex:Developer;
+  ex:age "Under 18 years old";
+  ex:compensation "NA";
+  ex:devType " online community);Friend or family member";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "Technical documentation;Written Tutorials;Stack Overflow;Video-based Online Courses;Written-based Online Courses";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " forum";
+  ex:yearsOfCoding " blogs" .
+
+<http://example.org/dev/18> a ex:Developer;
+  ex:age "18-24 years old";
+  ex:compensation "3";
+  ex:devType "Other online resources (e.g.";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency "6";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/19> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "10";
+  ex:devType " forum";
+  ex:hasCountry "API document(s) and/or SDK document(s);Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Agree";
+  ex:orgSize " online community);School (i.e.";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "12";
+  ex:workExperience "Project planning;Deployment and monitoring";
+  ex:yearsAsPro " blogs";
+  ex:yearsOfCoding " videos" .
+
+<http://example.org/dev/20> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "NA";
+  ex:devType " forum";
+  ex:hasCountry "Database administrator";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " online community);Other (please specify):";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "NA";
+  ex:yearsAsPro " blogs";
+  ex:yearsOfCoding " videos" .
+
+<http://example.org/dev/21> a ex:Developer;
+  ex:age " but I write code sometimes as part of my work/studies";
+  ex:compensation " daily or weekly coding challenges)";
+  ex:devType " MBA";
+  ex:hasCountry " online community);Online Courses or Certification;Coding Bootcamp";
+  ex:hasEducationLevel " some in-person)";
+  ex:hasEmploymentType "25-34 years old";
+  ex:hasJobSatisfaction "Other:";
+  ex:industry "Agree";
+  ex:orgSize " etc.)";
+  ex:remoteWork "Employed";
+  ex:usesCurrency "Written Tutorials;Stack Overflow;Interactive tutorial;Video-based Online Courses;Online challenges (e.g.";
+  ex:workExperience "Writing code;Documenting code;Debugging and getting help;Committing and reviewing code;Search for answers";
+  ex:yearsAsPro " M.Eng.";
+  ex:yearsOfCoding " M.S." .
+
+<http://example.org/dev/22> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos";
+  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:hasCountry " College";
+  ex:hasEducationLevel "Hobby";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " etc)";
+  ex:workExperience "Good";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " MBA" .
+
+<http://example.org/dev/23> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "Developer";
+  ex:devType " videos";
+  ex:hasCountry "25";
+  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "10";
+  ex:industry "Agree";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "18";
+  ex:workExperience "Generating content or synthetic data";
+  ex:yearsAsPro "On the job training;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/24> a ex:Developer;
+  ex:age "55-64 years old";
+  ex:compensation "Technical documentation;Blogs;Stack Overflow;Social Media";
+  ex:devType "Other online resources (e.g.";
+  ex:hasCountry " College";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " etc)";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/25> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "15";
+  ex:devType "Books / Physical media;Colleague;Other online resources (e.g.";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "10";
+  ex:industry "Strongly agree";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time;Student";
+  ex:usesCurrency "20";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/26> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
+  ex:devType " videos";
+  ex:hasCountry " etc);Online Courses or Certification;Friend or family member";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;Written-based Online Courses;Certification videos";
+  ex:workExperience "NA";
+  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/27> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "NA";
+  ex:devType "NA";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "10";
+  ex:industry "Never";
+  ex:orgSize "NA";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Online Courses or Certification";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/28> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "NA";
+  ex:devType " Ed.D";
+  ex:hasCountry "6";
+  ex:hasEducationLevel "Remote";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Neither agree nor disagree";
+  ex:orgSize " etc.)";
+  ex:remoteWork " full-time;Independent contractor";
+  ex:usesCurrency "Cloud infrastructure engineer";
+  ex:workExperience "";
+  ex:yearsAsPro " Ph.D";
+  ex:yearsOfCoding " MD" .
+
+<http://example.org/dev/29> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "Developer";
+  ex:devType " videos";
+  ex:hasCountry "18";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " blogs";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency "12";
+  ex:workExperience "NA";
+  ex:yearsAsPro "On the job training;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/30> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "Developer";
+  ex:devType " videos";
+  ex:hasCountry "9";
+  ex:hasEducationLevel "I don’t code outside of work";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "6";
+  ex:workExperience "Project planning;Documenting code;Testing code;Committing and reviewing code;Deployment and monitoring";
+  ex:yearsAsPro "Colleague;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/31> a ex:Developer;
+  ex:age "Prefer not to say";
+  ex:compensation "NA";
+  ex:devType "NA";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "NA";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " etc);Online Courses or Certification";
+  ex:yearsOfCoding " College" .
+
+<http://example.org/dev/32> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "Other (please specify):";
+  ex:devType "Colleague;On the job training;School (i.e.";
+  ex:hasCountry "10";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Strongly agree";
+  ex:orgSize " University";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "7";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/33> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "12";
+  ex:devType " blogs";
+  ex:hasCountry "Technical documentation;Stack Overflow;How-to videos;Programming Games";
+  ex:hasEducationLevel "Hobby";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " forum";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
+  ex:workExperience "Debugging and getting help;Search for answers;Generating content or synthetic data";
+  ex:yearsAsPro " videos";
+  ex:yearsOfCoding "Other online resources (e.g." .
+
+<http://example.org/dev/34> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "Technical documentation;Stack Overflow;Video-based Online Courses;Online challenges (e.g.";
+  ex:devType "Books / Physical media;On the job training;Other online resources (e.g.";
+  ex:hasCountry " College";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "60-120 minutes a day";
+  ex:industry "Agree";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " etc);Online Courses or Certification";
+  ex:workExperience "NA";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/35> a ex:Developer;
+  ex:age "Under 18 years old";
+  ex:compensation "Student";
+  ex:devType " blogs";
+  ex:hasCountry "5";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " forum";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " videos";
+  ex:yearsOfCoding "On the job training;Other online resources (e.g." .
+
+<http://example.org/dev/36> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "Developer";
+  ex:devType " online community);School (i.e.";
+  ex:hasCountry "10";
+  ex:hasEducationLevel "Hobby;Freelance/contract work";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Agree";
+  ex:orgSize " University";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "6";
+  ex:workExperience "NA";
+  ex:yearsAsPro " forum";
+  ex:yearsOfCoding " blogs" .
+
+<http://example.org/dev/37> a ex:Developer;
+  ex:age "18-24 years old";
+  ex:compensation "NA";
+  ex:devType " University";
+  ex:hasCountry "8";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " College";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency "Student";
+  ex:workExperience "NA";
+  ex:yearsAsPro "School (i.e.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/38> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "NA";
+  ex:devType "On the job training;Online Courses or Certification";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Contribute to open-source projects;Bootstrapping a business;Freelance/contract work";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "NA";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " Ed.D" .
+
+<http://example.org/dev/39> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "NA";
+  ex:devType " etc.)";
+  ex:hasCountry "Developer";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "Coding Bootcamp";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency " full-stack";
+  ex:workExperience "NA";
+  ex:yearsAsPro " Ed.D";
+  ex:yearsOfCoding " Ph.D" .
+
+<http://example.org/dev/40> a ex:Developer;
+  ex:age "Under 18 years old";
+  ex:compensation "Developer";
+  ex:devType " blogs";
+  ex:hasCountry "1";
+  ex:hasEducationLevel "NA";
+  ex:hasEmploymentType "Student";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " forum";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "Less than 1 year";
+  ex:workExperience "";
+  ex:yearsAsPro " videos";
+  ex:yearsOfCoding "Books / Physical media;Other online resources (e.g." .
+
+<http://example.org/dev/41> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
+  ex:devType " videos";
+  ex:hasCountry " etc)";
+  ex:hasEducationLevel "Hobby;Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "Traditional public search engine";
+  ex:industry "Strongly agree";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "Technical documentation;Blogs;Written Tutorials;Stack Overflow";
+  ex:workExperience "Learning about a codebase;Project planning;Debugging and getting help;Testing code;Committing and reviewing code;Search for answers";
+  ex:yearsAsPro "Colleague;Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/42> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "12";
+  ex:devType "Books / Physical media;Other online resources (e.g.";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Disagree";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "15";
+  ex:workExperience "Documenting code";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " MBA" .
+
+<http://example.org/dev/43> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "15";
+  ex:devType " videos";
+  ex:hasCountry "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
+  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Bootstrapping a business;Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " blogs";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "22";
+  ex:workExperience "Predictive analytics;Generating content or synthetic data";
+  ex:yearsAsPro "Other online resources (e.g.";
+  ex:yearsOfCoding " etc.)" .
+
+<http://example.org/dev/44> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation "14";
+  ex:devType " etc.)";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "Disagree";
+  ex:orgSize "Books / Physical media;School (i.e.";
+  ex:remoteWork " full-time;Student";
+  ex:usesCurrency "22";
+  ex:workExperience "NA";
+  ex:yearsAsPro " MBA";
+  ex:yearsOfCoding " M.Eng." .
+
+<http://example.org/dev/45> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation " etc);Online Courses or Certification";
+  ex:devType " etc.)";
+  ex:hasCountry " University";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "Hybrid (on-prem and cloud)";
+  ex:industry "Agree";
+  ex:orgSize "Other online resources (e.g.";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " College";
+  ex:workExperience "Neither trust nor distrust";
+  ex:yearsAsPro " MBA";
+  ex:yearsOfCoding " M.Eng." .
+
+<http://example.org/dev/46> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "4";
+  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:hasCountry "NA";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "1";
+  ex:industry "Neither agree nor disagree";
+  ex:orgSize " videos";
+  ex:remoteWork " full-time;Student";
+  ex:usesCurrency "6";
+  ex:workExperience "Project planning;Debugging and getting help;Testing code;Committing and reviewing code;Deployment and monitoring;Predictive analytics;Generating content or synthetic data";
+  ex:yearsAsPro " etc.)";
+  ex:yearsOfCoding " B.Eng." .
+
+<http://example.org/dev/47> a ex:Developer;
+  ex:age "35-44 years old";
+  ex:compensation " etc)";
+  ex:devType " etc.)";
+  ex:hasCountry " University";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "Amount of technical debt;Number of software tools in use;Complexity of tech stack for build";
+  ex:industry "Agree";
+  ex:orgSize "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:remoteWork " full-time";
+  ex:usesCurrency " College";
+  ex:workExperience "Highly distrust";
+  ex:yearsAsPro " MBA";
+  ex:yearsOfCoding " M.Eng." .
+
+<http://example.org/dev/48> a ex:Developer;
+  ex:age "45-54 years old";
+  ex:compensation "25";
+  ex:devType " etc.)";
+  ex:hasCountry "Books;Coding sessions (live or recorded);Written-based Online Courses";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
+  ex:remoteWork " part-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "NA";
+  ex:yearsAsPro " Ed.D";
+  ex:yearsOfCoding " Ph.D" .
+
+<http://example.org/dev/49> a ex:Developer;
+  ex:age "65 years or older";
+  ex:compensation "NA";
+  ex:devType " forum";
+  ex:hasCountry "Developer";
+  ex:hasEducationLevel "Apples";
+  ex:hasEmploymentType "Independent contractor";
+  ex:hasJobSatisfaction "NA";
+  ex:industry "NA";
+  ex:orgSize " online community);Online Courses or Certification";
+  ex:remoteWork " freelancer";
+  ex:usesCurrency " desktop or enterprise applications";
+  ex:workExperience "NA";
+  ex:yearsAsPro " blogs";
+  ex:yearsOfCoding " videos" .
+
+<http://example.org/dev/50> a ex:Developer;
+  ex:age "25-34 years old";
+  ex:compensation "NA";
+  ex:devType " online community);Online Courses or Certification";
+  ex:hasCountry " back-end";
+  ex:hasEducationLevel "Hobby;Professional development or self-paced learning from online courses";
+  ex:hasEmploymentType "Employed";
+  ex:hasJobSatisfaction "0";
+  ex:industry "1-2 times a week";
+  ex:orgSize "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI";
+  ex:remoteWork " full-time";
+  ex:usesCurrency "NA";
+  ex:workExperience "";
+  ex:yearsAsPro " forum";
+  ex:yearsOfCoding " blogs" .
