@@ -63,8 +63,6 @@ public class IRIFactory {
                             + "/"
                             + programmingLanguage);
 
-            ProgrammingLanguage.fromValue(programmingLanguage);
-
             Predicate requiredPredicate = Predicate.fromColumn(column.getKey());
             modelBuilder.subject(iriToCheck)
                     .add(RDF.TYPE, requiredPredicate.getLocalNameWithPrefix(OntologyIdentity.PREFIX.getValue()))
