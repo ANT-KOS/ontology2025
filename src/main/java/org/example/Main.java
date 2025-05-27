@@ -9,6 +9,7 @@ import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.rio.*;
 
 import java.io.*;
@@ -58,6 +59,16 @@ public class Main {
                 }
             }
         }
+
+        /*
+        TEST ADD RULE
+        IRI test = SimpleValueFactory.getInstance().createIRI(NS + "test");
+                        modelBuilder.subject(test)
+                                .add(RDF.TYPE, RDF.PROPERTY)           // declare hasCountry as rdf:Property
+                                .add(RDFS.DOMAIN, SimpleValueFactory.getInstance().createIRI(NS + "testDomain/"))           // domain Developer
+                                .add(RDFS.RANGE, SimpleValueFactory.getInstance().createIRI(NS + "testRange/"))
+                                .subject(dev);
+         */
 
         try (OutputStream outputStream = new FileOutputStream("output.ttl")) {
             Rio.write(modelBuilder.build(), outputStream, RDFFormat.TURTLE);

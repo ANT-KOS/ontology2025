@@ -8,6 +8,10 @@
   ex:hasEducationLevel "Primary/elementary school";
   ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
+ex:test a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+  <http://www.w3.org/2000/01/rdf-schema#domain> <http://example.org/testDomain/>;
+  <http://www.w3.org/2000/01/rdf-schema#range> <http://example.org/testRange/> .
+
 <http://example.org/country/United%20States%20of%20America> a ex:Country;
   ex:countryName "United States of America";
   <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
