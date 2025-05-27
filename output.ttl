@@ -1,801 +1,1349 @@
 @prefix ex: <http://example.org/> .
 
 <http://example.org/dev/1> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "Under 18 years old";
-  ex:compensation "NA";
-  ex:devType "NA";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Hobby";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "NA";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "United States of America";
-  ex:workExperience "NA";
-  ex:yearsAsPro "NA";
-  ex:yearsOfCoding "NA" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Primary/elementary school";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+
+<http://example.org/country/United%20States%20of%20America> a ex:Country;
+  ex:countryName "United States of America";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/2> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "Developer";
-  ex:devType " videos";
-  ex:hasCountry "20";
-  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Other (please specify):";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Agree";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "17";
-  ex:workExperience "NA";
-  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "17";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:workExperience "17" .
+
+<http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>
+  a ex:Country;
+  ex:countryName "United Kingdom of Great Britain and Northern Ireland";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/3> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media";
-  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:hasCountry " College";
-  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Other (please specify):";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " etc)";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " MBA" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "37";
+  ex:yearsAsPro "27";
+  ex:devType "Developer Experience";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
 
 <http://example.org/dev/4> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
   ex:age "18-24 years old";
-  ex:compensation "Developer";
-  ex:devType " online community);School (i.e.";
-  ex:hasCountry "4";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " University";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "Learning about a codebase;Project planning;Writing code;Documenting code;Debugging and getting help;Deployment and monitoring;Search for answers;Generating content or synthetic data";
-  ex:yearsAsPro " forum";
-  ex:yearsOfCoding " blogs" .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "4";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Canada> .
+
+<http://example.org/country/Canada> a ex:Country;
+  ex:countryName "Canada";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/5> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
-  ex:compensation " full-stack";
-  ex:devType " blogs";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " forum";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "Developer";
-  ex:workExperience "NA";
-  ex:yearsAsPro " videos";
-  ex:yearsOfCoding "Other online resources (e.g." .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "9";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Norway> .
+
+<http://example.org/country/Norway> a ex:Country;
+  ex:countryName "Norway";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/6> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
-  ex:compensation "NA";
-  ex:devType "NA";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "NA";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " etc);Online Courses or Certification";
-  ex:yearsOfCoding " College" .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Primary/elementary school";
+  ex:yearsOfCoding "10";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/7> a ex:Developer;
-  ex:age " but I write code sometimes as part of my work/studies";
-  ex:compensation "7";
-  ex:devType " etc.)";
-  ex:hasCountry "Technical documentation;Stack Overflow;Written-based Online Courses";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "35-44 years old";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "Other online resources (e.g.";
-  ex:remoteWork "Employed";
-  ex:usesCurrency "NA";
-  ex:workExperience "NA";
-  ex:yearsAsPro " Ed.D";
-  ex:yearsOfCoding " Ph.D" .
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "7";
+  ex:yearsAsPro "7";
+  ex:devType "Academic researcher";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/8> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
   ex:age "18-24 years old";
-  ex:compensation "Student";
-  ex:devType " videos";
-  ex:hasCountry "1";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time;Not employed";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro "Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Student, full-time;Not employed, but looking for work";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "1";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Uzbekistan> .
+
+<http://example.org/country/Uzbekistan> a ex:Country;
+  ex:countryName "Uzbekistan";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/9> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
   ex:age "45-54 years old";
-  ex:compensation "NA";
-  ex:devType "Books / Physical media;Other online resources (e.g.";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Hobby";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "20";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " Ed.D" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "20";
+  ex:devType "Academic researcher";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
 
 <http://example.org/dev/10> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation " etc)";
-  ex:devType " etc.)";
-  ex:hasCountry " University";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "On the job training;Other online resources (e.g.";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency " College";
-  ex:workExperience "Neither trust nor distrust";
-  ex:yearsAsPro " MBA";
-  ex:yearsOfCoding " M.Eng." .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "11";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Serbia> .
+
+<http://example.org/country/Serbia> a ex:Country;
+  ex:countryName "Serbia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/11> a ex:Developer;
-  ex:age " but no longer am";
-  ex:compensation "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;Video-based Online Courses";
-  ex:devType "Books / Physical media;Other online resources (e.g.";
-  ex:hasCountry " College";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "35-44 years old";
-  ex:hasJobSatisfaction "Cloud only (single or multi-cloud)";
-  ex:industry "Agree";
-  ex:orgSize " videos";
-  ex:remoteWork "Employed";
-  ex:usesCurrency " etc)";
-  ex:workExperience "Learning about a codebase;Writing code;Documenting code;Debugging and getting help;Search for answers";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasMainBranch "I used to be a developer by profession, but no longer am";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:devType "Project manager";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "15";
+  ex:industry "Healthcare";
+  ex:hasJobSatisfaction "8" .
 
 <http://example.org/dev/12> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "Developer Advocate";
-  ex:devType "Books / Physical media;School (i.e.";
-  ex:hasCountry "30";
-  ex:hasEducationLevel "Hobby;School or academic work";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " University";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "25";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " Ed.D" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "30";
+  ex:yearsAsPro "25";
+  ex:devType "Developer Advocate";
+  ex:hasCountry <http://example.org/country/Poland> .
+
+<http://example.org/country/Poland> a ex:Country;
+  ex:countryName "Poland";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/13> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "Developer";
-  ex:devType "Books / Physical media;On the job training;School (i.e.";
-  ex:hasCountry "20";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Agree";
-  ex:orgSize " University";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "12";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "12";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "12";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "8" .
 
 <http://example.org/dev/14> a ex:Developer;
-  ex:age " but no longer am";
-  ex:compensation "NA";
-  ex:devType "Colleague;Other online resources (e.g.";
-  ex:hasCountry "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine;AI-powered search/dev tool (free)";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "35-44 years old";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork "Not employed";
-  ex:usesCurrency "20";
-  ex:workExperience "Learning about a codebase";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasMainBranch "I used to be a developer by profession, but no longer am";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Not employed, and not looking for work";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/Philippines> .
+
+<http://example.org/country/Philippines> a ex:Country;
+  ex:countryName "Philippines";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/15> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "15";
-  ex:devType " etc.)";
-  ex:hasCountry "Stack Overflow;Coding sessions (live or recorded);How-to videos;Video-based Online Courses";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "Books / Physical media;Other online resources (e.g.";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "NA";
-  ex:yearsAsPro " MBA";
-  ex:yearsOfCoding " M.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "10";
+  ex:hasCountry <http://example.org/country/Bulgaria> .
+
+<http://example.org/country/Bulgaria> a ex:Country;
+  ex:countryName "Bulgaria";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/16> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "NA";
-  ex:devType " forum";
-  ex:hasCountry "Developer";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "1-2 times a week";
-  ex:orgSize " online community);Online Courses or Certification";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " full-stack";
-  ex:workExperience "NA";
-  ex:yearsAsPro " blogs";
-  ex:yearsOfCoding " videos" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "31";
+  ex:yearsAsPro "27";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:workExperience "29";
+  ex:industry "Banking/Financial Services";
+  ex:hasJobSatisfaction "5" .
+
+<http://example.org/country/Switzerland> a ex:Country;
+  ex:countryName "Switzerland";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/17> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
-  ex:compensation "NA";
-  ex:devType " online community);Friend or family member";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "Technical documentation;Written Tutorials;Stack Overflow;Video-based Online Courses;Written-based Online Courses";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " forum";
-  ex:yearsOfCoding " blogs" .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Primary/elementary school";
+  ex:yearsOfCoding "7";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Canada> .
 
 <http://example.org/dev/18> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
-  ex:compensation "3";
-  ex:devType "Other online resources (e.g.";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency "6";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "3";
+  ex:devType "Developer, front-end";
+  ex:hasCountry <http://example.org/country/India> .
+
+<http://example.org/country/India> a ex:Country;
+  ex:countryName "India";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/19> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "10";
-  ex:devType " forum";
-  ex:hasCountry "API document(s) and/or SDK document(s);Traditional public search engine;AI-powered search/dev tool (free);AI-powered search/dev tool (paid)";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Agree";
-  ex:orgSize " online community);School (i.e.";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "12";
-  ex:workExperience "Project planning;Deployment and monitoring";
-  ex:yearsAsPro " blogs";
-  ex:yearsOfCoding " videos" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "12";
+  ex:yearsAsPro "10";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:workExperience "12";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "10" .
+
+<http://example.org/country/Germany> a ex:Country;
+  ex:countryName "Germany";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/20> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "NA";
-  ex:devType " forum";
-  ex:hasCountry "Database administrator";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " online community);Other (please specify):";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "NA";
-  ex:yearsAsPro " blogs";
-  ex:yearsOfCoding " videos" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "22";
+  ex:yearsAsPro "11";
+  ex:devType "Database administrator";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
 
 <http://example.org/dev/21> a ex:Developer;
-  ex:age " but I write code sometimes as part of my work/studies";
-  ex:compensation " daily or weekly coding challenges)";
-  ex:devType " MBA";
-  ex:hasCountry " online community);Online Courses or Certification;Coding Bootcamp";
-  ex:hasEducationLevel " some in-person)";
-  ex:hasEmploymentType "25-34 years old";
-  ex:hasJobSatisfaction "Other:";
-  ex:industry "Agree";
-  ex:orgSize " etc.)";
-  ex:remoteWork "Employed";
-  ex:usesCurrency "Written Tutorials;Stack Overflow;Interactive tutorial;Video-based Online Courses;Online challenges (e.g.";
-  ex:workExperience "Writing code;Documenting code;Debugging and getting help;Committing and reviewing code;Search for answers";
-  ex:yearsAsPro " M.Eng.";
-  ex:yearsOfCoding " M.S." .
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "5";
+  ex:yearsAsPro "Less than 1 year";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:workExperience "10";
+  ex:industry "Other:";
+  ex:hasJobSatisfaction "6" .
 
 <http://example.org/dev/22> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;How-to videos";
-  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:hasCountry " College";
-  ex:hasEducationLevel "Hobby";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " etc)";
-  ex:workExperience "Good";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " MBA" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "36";
+  ex:yearsAsPro "11";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Germany> .
 
 <http://example.org/dev/23> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "Developer";
-  ex:devType " videos";
-  ex:hasCountry "25";
-  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "10";
-  ex:industry "Agree";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "18";
-  ex:workExperience "Generating content or synthetic data";
-  ex:yearsAsPro "On the job training;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "25";
+  ex:yearsAsPro "18";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Ireland>;
+  ex:workExperience "18";
+  ex:industry "Banking/Financial Services";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/country/Ireland> a ex:Country;
+  ex:countryName "Ireland";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/24> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "55-64 years old";
-  ex:compensation "Technical documentation;Blogs;Stack Overflow;Social Media";
-  ex:devType "Other online resources (e.g.";
-  ex:hasCountry " College";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " etc)";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "44";
+  ex:yearsAsPro "37";
+  ex:devType "Developer, desktop or enterprise applications";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/25> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "15";
-  ex:devType "Books / Physical media;Colleague;Other online resources (e.g.";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "10";
-  ex:industry "Strongly agree";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time;Student";
-  ex:usesCurrency "20";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time;Student, part-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "15";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Italy>;
+  ex:workExperience "16";
+  ex:industry "Banking/Financial Services";
+  ex:hasJobSatisfaction "4" .
+
+<http://example.org/country/Italy> a ex:Country;
+  ex:countryName "Italy";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/26> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
-  ex:devType " videos";
-  ex:hasCountry " etc);Online Courses or Certification;Friend or family member";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "Technical documentation;Books;Written Tutorials;Stack Overflow;Social Media;How-to videos;Interactive tutorial;Written-based Online Courses;Certification videos";
-  ex:workExperience "NA";
-  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Associate degree (A.A., A.S., etc.)";
+  ex:yearsOfCoding "24";
+  ex:yearsAsPro "20";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/27> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "NA";
-  ex:devType "NA";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "10";
-  ex:industry "Never";
-  ex:orgSize "NA";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro "Books / Physical media;Colleague;On the job training;Online Courses or Certification";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "17";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Italy>;
+  ex:workExperience "17";
+  ex:industry "Media & Advertising Services";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/28> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "NA";
-  ex:devType " Ed.D";
-  ex:hasCountry "6";
-  ex:hasEducationLevel "Remote";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Neither agree nor disagree";
-  ex:orgSize " etc.)";
-  ex:remoteWork " full-time;Independent contractor";
-  ex:usesCurrency "Cloud infrastructure engineer";
-  ex:workExperience "";
-  ex:yearsAsPro " Ph.D";
-  ex:yearsOfCoding " MD" .
+  ex:hasEmploymentType "Employed, full-time;Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "7";
+  ex:yearsAsPro "6";
+  ex:devType "Cloud infrastructure engineer";
+  ex:hasCountry <http://example.org/country/Ukraine>;
+  ex:workExperience "6";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/country/Ukraine> a ex:Country;
+  ex:countryName "Ukraine";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/29> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "Developer";
-  ex:devType " videos";
-  ex:hasCountry "18";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " blogs";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency "12";
-  ex:workExperience "NA";
-  ex:yearsAsPro "On the job training;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "18";
+  ex:yearsAsPro "12";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
 
 <http://example.org/dev/30> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "Developer";
-  ex:devType " videos";
-  ex:hasCountry "9";
-  ex:hasEducationLevel "I don’t code outside of work";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "6";
-  ex:workExperience "Project planning;Documenting code;Testing code;Committing and reviewing code;Deployment and monitoring";
-  ex:yearsAsPro "Colleague;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "9";
+  ex:yearsAsPro "6";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Philippines> .
 
 <http://example.org/dev/31> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "Prefer not to say";
-  ex:compensation "NA";
-  ex:devType "NA";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "NA";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " etc);Online Courses or Certification";
-  ex:yearsOfCoding " College" .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Something else";
+  ex:yearsOfCoding "3";
+  ex:yearsAsPro "2";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Australia> .
+
+<http://example.org/country/Australia> a ex:Country;
+  ex:countryName "Australia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/32> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "Other (please specify):";
-  ex:devType "Colleague;On the job training;School (i.e.";
-  ex:hasCountry "10";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Strongly agree";
-  ex:orgSize " University";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "7";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "7";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "7";
+  ex:industry "Insurance";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/33> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "12";
-  ex:devType " blogs";
-  ex:hasCountry "Technical documentation;Stack Overflow;How-to videos;Programming Games";
-  ex:hasEducationLevel "Hobby";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " forum";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
-  ex:workExperience "Debugging and getting help;Search for answers;Generating content or synthetic data";
-  ex:yearsAsPro " videos";
-  ex:yearsOfCoding "Other online resources (e.g." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Associate degree (A.A., A.S., etc.)";
+  ex:yearsOfCoding "12";
+  ex:yearsAsPro "7";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Brazil> .
+
+<http://example.org/country/Brazil> a ex:Country;
+  ex:countryName "Brazil";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/34> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "Technical documentation;Stack Overflow;Video-based Online Courses;Online challenges (e.g.";
-  ex:devType "Books / Physical media;On the job training;Other online resources (e.g.";
-  ex:hasCountry " College";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "60-120 minutes a day";
-  ex:industry "Agree";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " etc);Online Courses or Certification";
-  ex:workExperience "NA";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "18";
+  ex:yearsAsPro "16";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Japan>;
+  ex:workExperience "16";
+  ex:industry "Internet, Telecomm or Information Services";
+  ex:hasJobSatisfaction "6" .
+
+<http://example.org/country/Japan> a ex:Country;
+  ex:countryName "Japan";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/35> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
   ex:age "Under 18 years old";
-  ex:compensation "Student";
-  ex:devType " blogs";
-  ex:hasCountry "5";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " forum";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " videos";
-  ex:yearsOfCoding "On the job training;Other online resources (e.g." .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "5";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/36> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "Developer";
-  ex:devType " online community);School (i.e.";
-  ex:hasCountry "10";
-  ex:hasEducationLevel "Hobby;Freelance/contract work";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Agree";
-  ex:orgSize " University";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "6";
-  ex:workExperience "NA";
-  ex:yearsAsPro " forum";
-  ex:yearsOfCoding " blogs" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "6";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "6";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/37> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "18-24 years old";
-  ex:compensation "NA";
-  ex:devType " University";
-  ex:hasCountry "8";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " College";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency "Student";
-  ex:workExperience "NA";
-  ex:yearsAsPro "School (i.e.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "9";
+  ex:yearsAsPro "8";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Austria> .
+
+<http://example.org/country/Austria> a ex:Country;
+  ex:countryName "Austria";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/38> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "NA";
-  ex:devType "On the job training;Online Courses or Certification";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Contribute to open-source projects;Bootstrapping a business;Freelance/contract work";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "NA";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " Ed.D" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "6";
+  ex:devType "Data scientist or machine learning specialist";
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+
+<http://example.org/country/Iran,%20Islamic%20Republic%20of...> a ex:Country;
+  ex:countryName "Iran, Islamic Republic of...";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/39> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "NA";
-  ex:devType " etc.)";
-  ex:hasCountry "Developer";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "Coding Bootcamp";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency " full-stack";
-  ex:workExperience "NA";
-  ex:yearsAsPro " Ed.D";
-  ex:yearsOfCoding " Ph.D" .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "8";
+  ex:yearsAsPro "7";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/France> .
+
+<http://example.org/country/France> a ex:Country;
+  ex:countryName "France";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/40> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "Under 18 years old";
-  ex:compensation "Developer";
-  ex:devType " blogs";
-  ex:hasCountry "1";
-  ex:hasEducationLevel "NA";
-  ex:hasEmploymentType "Student";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " forum";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "Less than 1 year";
-  ex:workExperience "";
-  ex:yearsAsPro " videos";
-  ex:yearsOfCoding "Books / Physical media;Other online resources (e.g." .
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "1";
+  ex:yearsAsPro "Less than 1 year";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Saudi%20Arabia> .
+
+<http://example.org/country/Saudi%20Arabia> a ex:Country;
+  ex:countryName "Saudi Arabia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/41> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "API document(s) and/or SDK document(s);User guides or README files found in the source repository;First-party knowledge base";
-  ex:devType " videos";
-  ex:hasCountry " etc)";
-  ex:hasEducationLevel "Hobby;Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "Traditional public search engine";
-  ex:industry "Strongly agree";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "Technical documentation;Blogs;Written Tutorials;Stack Overflow";
-  ex:workExperience "Learning about a codebase;Project planning;Debugging and getting help;Testing code;Committing and reviewing code;Search for answers";
-  ex:yearsAsPro "Colleague;Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "9";
+  ex:yearsAsPro "7";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Brazil>;
+  ex:workExperience "7";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/42> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "12";
-  ex:devType "Books / Physical media;Other online resources (e.g.";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Disagree";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "15";
-  ex:workExperience "Documenting code";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " MBA" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "12";
+  ex:devType "Research & Development role";
+  ex:hasCountry <http://example.org/country/Italy>;
+  ex:workExperience "16";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/43> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "15";
-  ex:devType " videos";
-  ex:hasCountry "API document(s) and/or SDK document(s);User guides or README files found in the source repository;Traditional public search engine";
-  ex:hasEducationLevel "Hobby;Contribute to open-source projects;Bootstrapping a business;Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " blogs";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "22";
-  ex:workExperience "Predictive analytics;Generating content or synthetic data";
-  ex:yearsAsPro "Other online resources (e.g.";
-  ex:yearsOfCoding " etc.)" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "22";
+  ex:yearsAsPro "15";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Ireland> .
 
 <http://example.org/dev/44> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation "14";
-  ex:devType " etc.)";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "Disagree";
-  ex:orgSize "Books / Physical media;School (i.e.";
-  ex:remoteWork " full-time;Student";
-  ex:usesCurrency "22";
-  ex:workExperience "NA";
-  ex:yearsAsPro " MBA";
-  ex:yearsOfCoding " M.Eng." .
+  ex:hasEmploymentType "Employed, full-time;Student, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "22";
+  ex:yearsAsPro "14";
+  ex:devType "Academic researcher";
+  ex:hasCountry <http://example.org/country/Austria>;
+  ex:workExperience "14";
+  ex:industry "Higher Education";
+  ex:hasJobSatisfaction "9" .
 
 <http://example.org/dev/45> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation " etc);Online Courses or Certification";
-  ex:devType " etc.)";
-  ex:hasCountry " University";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "Hybrid (on-prem and cloud)";
-  ex:industry "Agree";
-  ex:orgSize "Other online resources (e.g.";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " College";
-  ex:workExperience "Neither trust nor distrust";
-  ex:yearsAsPro " MBA";
-  ex:yearsOfCoding " M.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "7";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Romania>;
+  ex:workExperience "3";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/country/Romania> a ex:Country;
+  ex:countryName "Romania";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
 
 <http://example.org/dev/46> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "4";
-  ex:devType "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:hasCountry "NA";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "1";
-  ex:industry "Neither agree nor disagree";
-  ex:orgSize " videos";
-  ex:remoteWork " full-time;Student";
-  ex:usesCurrency "6";
-  ex:workExperience "Project planning;Debugging and getting help;Testing code;Committing and reviewing code;Deployment and monitoring;Predictive analytics;Generating content or synthetic data";
-  ex:yearsAsPro " etc.)";
-  ex:yearsOfCoding " B.Eng." .
+  ex:hasEmploymentType "Employed, full-time;Student, part-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "4";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:workExperience "6";
+  ex:industry "Energy";
+  ex:hasJobSatisfaction "7" .
 
 <http://example.org/dev/47> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "35-44 years old";
-  ex:compensation " etc)";
-  ex:devType " etc.)";
-  ex:hasCountry " University";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "Amount of technical debt;Number of software tools in use;Complexity of tech stack for build";
-  ex:industry "Agree";
-  ex:orgSize "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:remoteWork " full-time";
-  ex:usesCurrency " College";
-  ex:workExperience "Highly distrust";
-  ex:yearsAsPro " MBA";
-  ex:yearsOfCoding " M.Eng." .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "15";
+  ex:devType "Developer, embedded applications or devices";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "15";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "6" .
 
 <http://example.org/dev/48> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "45-54 years old";
-  ex:compensation "25";
-  ex:devType " etc.)";
-  ex:hasCountry "Books;Coding sessions (live or recorded);Written-based Online Courses";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize "Books / Physical media;Colleague;On the job training;Other online resources (e.g.";
-  ex:remoteWork " part-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "NA";
-  ex:yearsAsPro " Ed.D";
-  ex:yearsOfCoding " Ph.D" .
+  ex:hasEmploymentType "Employed, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "25";
+  ex:yearsAsPro "15";
+  ex:devType "System administrator";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
 
 <http://example.org/dev/49> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "65 years or older";
-  ex:compensation "NA";
-  ex:devType " forum";
-  ex:hasCountry "Developer";
-  ex:hasEducationLevel "Apples";
-  ex:hasEmploymentType "Independent contractor";
-  ex:hasJobSatisfaction "NA";
-  ex:industry "NA";
-  ex:orgSize " online community);Online Courses or Certification";
-  ex:remoteWork " freelancer";
-  ex:usesCurrency " desktop or enterprise applications";
-  ex:workExperience "NA";
-  ex:yearsAsPro " blogs";
-  ex:yearsOfCoding " videos" .
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "More than 50 years";
+  ex:yearsAsPro "45";
+  ex:devType "Developer, desktop or enterprise applications";
+  ex:hasCountry <http://example.org/country/Germany> .
 
 <http://example.org/dev/50> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
   ex:age "25-34 years old";
-  ex:compensation "NA";
-  ex:devType " online community);Online Courses or Certification";
-  ex:hasCountry " back-end";
-  ex:hasEducationLevel "Hobby;Professional development or self-paced learning from online courses";
-  ex:hasEmploymentType "Employed";
-  ex:hasJobSatisfaction "0";
-  ex:industry "1-2 times a week";
-  ex:orgSize "Technical documentation;Blogs;Books;Written Tutorials;Stack Overflow;Coding sessions (live or recorded);Social Media;How-to videos;Interactive tutorial;Video-based Online Courses;Written-based Online Courses;AI";
-  ex:remoteWork " full-time";
-  ex:usesCurrency "NA";
-  ex:workExperience "";
-  ex:yearsAsPro " forum";
-  ex:yearsOfCoding " blogs" .
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "11";
+  ex:yearsAsPro "4";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:workExperience "4";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "3" .
+
+<http://example.org/dev/51> a ex:Developer;
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "Less than 1 year";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+
+<http://example.org/dev/52> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time;Employed, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "8";
+  ex:yearsAsPro "3";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+
+<http://example.org/dev/53> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, part-time;Employed, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "7";
+  ex:yearsAsPro "1";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Germany> .
+
+<http://example.org/dev/54> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "8";
+  ex:yearsAsPro "6";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Bulgaria>;
+  ex:workExperience "6";
+  ex:industry "Fintech";
+  ex:hasJobSatisfaction "3" .
+
+<http://example.org/dev/55> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "18";
+  ex:yearsAsPro "8";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:workExperience "8";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/56> a ex:Developer;
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "55-64 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "29";
+  ex:yearsAsPro "24";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/Germany> .
+
+<http://example.org/dev/57> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "Under 18 years old";
+  ex:hasEmploymentType "I prefer not to say";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "4";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Italy> .
+
+<http://example.org/dev/58> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "2";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Turkey>;
+  ex:workExperience "1";
+  ex:industry "Other:";
+  ex:hasJobSatisfaction "6" .
+
+<http://example.org/country/Turkey> a ex:Country;
+  ex:countryName "Turkey";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/59> a ex:Developer;
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "4";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/India> .
+
+<http://example.org/dev/60> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Not employed, but looking for work";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "11";
+  ex:yearsAsPro "6";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Ireland> .
+
+<http://example.org/dev/61> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time;Employed, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "5";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/Nepal> .
+
+<http://example.org/country/Nepal> a ex:Country;
+  ex:countryName "Nepal";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/62> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "55-64 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "40";
+  ex:yearsAsPro "29";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:workExperience "29";
+  ex:industry "Higher Education";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/63> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, part-time";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "5";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Algeria> .
+
+<http://example.org/country/Algeria> a ex:Country;
+  ex:countryName "Algeria";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/64> a ex:Developer;
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "5";
+  ex:yearsAsPro "5";
+  ex:devType "DevOps specialist";
+  ex:hasCountry <http://example.org/country/Bulgaria>;
+  ex:workExperience "9";
+  ex:industry "Banking/Financial Services";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/dev/65> a ex:Developer;
+  ex:hasMainBranch "I used to be a developer by profession, but no longer am";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "39";
+  ex:devType "Engineering manager";
+  ex:hasCountry <http://example.org/country/Sweden>;
+  ex:workExperience "27";
+  ex:industry "Banking/Financial Services";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/country/Sweden> a ex:Country;
+  ex:countryName "Sweden";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/66> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "1";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+
+<http://example.org/dev/67> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "Less than 1 year";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Switzerland> .
+
+<http://example.org/dev/68> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+
+<http://example.org/dev/69> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Not employed, but looking for work";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "15";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Netherlands> .
+
+<http://example.org/country/Netherlands> a ex:Country;
+  ex:countryName "Netherlands";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/70> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "8";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Croatia>;
+  ex:workExperience "10";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/country/Croatia> a ex:Country;
+  ex:countryName "Croatia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/71> a ex:Developer;
+  ex:hasMainBranch "I used to be a developer by profession, but no longer am";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Not employed, and not looking for work";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "2";
+  ex:hasCountry <http://example.org/country/Australia> .
+
+<http://example.org/dev/72> a ex:Developer;
+  ex:hasMainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "30";
+  ex:yearsAsPro "30";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Sweden>;
+  ex:workExperience "31";
+  ex:industry "Retail and Consumer Services";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/73> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Employed, full-time;Student, full-time;Independent contractor, freelancer, or self-employed;Employed, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "3";
+  ex:yearsAsPro "1";
+  ex:devType "Data scientist or machine learning specialist";
+  ex:orgSize "100 to 499 employees";
+  ex:hasCountry <http://example.org/country/Pakistan>;
+  ex:usesCurrency """PKR	Pakistani rupee""";
+  ex:compensation "2040000";
+  ex:workExperience "3";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "10" .
+
+<http://example.org/country/Pakistan> a ex:Country;
+  ex:countryName "Pakistan";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/74> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "24";
+  ex:yearsAsPro "10";
+  ex:devType "Developer, desktop or enterprise applications";
+  ex:hasCountry <http://example.org/country/Czech%20Republic>;
+  ex:workExperience "1";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "9" .
+
+<http://example.org/country/Czech%20Republic> a ex:Country;
+  ex:countryName "Czech Republic";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/75> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "55-64 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "40";
+  ex:yearsAsPro "30";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Switzerland>;
+  ex:workExperience "35";
+  ex:industry "Manufacturing";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/76> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Not employed, but looking for work";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "4";
+  ex:devType "Designer";
+  ex:hasCountry <http://example.org/country/India> .
+
+<http://example.org/dev/77> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "31";
+  ex:yearsAsPro "25";
+  ex:devType "Database administrator";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "25";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "6" .
+
+<http://example.org/dev/78> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Employed, full-time;Student, part-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "5";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Republic%20of%20North%20Macedonia>;
+  ex:workExperience "5";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/country/Republic%20of%20North%20Macedonia> a ex:Country;
+  ex:countryName "Republic of North Macedonia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/79> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "30";
+  ex:yearsAsPro "24";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "28";
+  ex:industry "Government";
+  ex:hasJobSatisfaction "8" .
+
+<http://example.org/dev/80> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "42";
+  ex:yearsAsPro "26";
+  ex:devType "Engineering manager";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "26";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "8" .
+
+<http://example.org/dev/81> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "10";
+  ex:devType "Developer, desktop or enterprise applications";
+  ex:hasCountry <http://example.org/country/Germany>;
+  ex:workExperience "10";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/82> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time;Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "12";
+  ex:yearsAsPro "9";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Finland>;
+  ex:workExperience "13";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/country/Finland> a ex:Country;
+  ex:countryName "Finland";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/83> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Employed, full-time;Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "34";
+  ex:yearsAsPro "20";
+  ex:devType "DevOps specialist" .
+
+<http://example.org/country/Slovakia> a ex:Country;
+  ex:countryName "Slovakia";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/83> ex:hasCountry <http://example.org/country/Slovakia>;
+  ex:workExperience "30";
+  ex:industry "Computer Systems Design and Services";
+  ex:hasJobSatisfaction "4" .
+
+<http://example.org/dev/84> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "4";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Poland>;
+  ex:workExperience "5";
+  ex:industry "Internet, Telecomm or Information Services";
+  ex:hasJobSatisfaction "2" .
+
+<http://example.org/dev/85> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Not employed, but looking for work";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "19";
+  ex:yearsAsPro "12";
+  ex:devType "Developer, desktop or enterprise applications";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+
+<http://example.org/dev/86> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Not employed, and not looking for work";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "4";
+  ex:devType "Other (please specify):";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+
+<http://example.org/dev/87> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "45-54 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "40";
+  ex:yearsAsPro "29";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:workExperience "29";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "8" .
+
+<http://example.org/dev/88> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "12";
+  ex:yearsAsPro "9";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Germany> .
+
+<http://example.org/dev/89> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "35-44 years old";
+  ex:hasEmploymentType "Independent contractor, freelancer, or self-employed";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "20";
+  ex:yearsAsPro "20";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland> .
+
+<http://example.org/dev/90> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Master’s degree (M.A., M.S., M.Eng., MBA, etc.)";
+  ex:yearsOfCoding "2";
+  ex:devType "Security professional";
+  ex:hasCountry <http://example.org/country/India>;
+  ex:workExperience "3";
+  ex:industry "Higher Education";
+  ex:hasJobSatisfaction "8" .
+
+<http://example.org/dev/91> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "I prefer not to say";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "2";
+  ex:devType "Designer";
+  ex:hasCountry <http://example.org/country/Russian%20Federation> .
+
+<http://example.org/country/Russian%20Federation> a ex:Country;
+  ex:countryName "Russian Federation";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/92> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "Under 18 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Primary/elementary school";
+  ex:yearsOfCoding "7";
+  ex:devType "Student";
+  ex:hasCountry <http://example.org/country/Poland> .
+
+<http://example.org/dev/93> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "55-64 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "40";
+  ex:yearsAsPro "37";
+  ex:devType "Senior Executive (C-Suite, VP, etc.)";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America>;
+  ex:workExperience "37";
+  ex:industry "Computer Systems Design and Services";
+  ex:hasJobSatisfaction "4" .
+
+<http://example.org/dev/94> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "10";
+  ex:yearsAsPro "4";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Ireland>;
+  ex:workExperience "4";
+  ex:industry "Transportation, or Supply Chain";
+  ex:hasJobSatisfaction "6" .
+
+<http://example.org/dev/95> a ex:Developer;
+  ex:hasMainBranch "I am learning to code";
+  ex:age "Under 18 years old";
+  ex:hasEmploymentType "Student, part-time";
+  ex:hasEducationLevel "Some college/university study without earning a degree";
+  ex:yearsOfCoding "4";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Iran,%20Islamic%20Republic%20of...> .
+
+<http://example.org/dev/96> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "In-person";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "6";
+  ex:yearsAsPro "2";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/Greece>;
+  ex:workExperience "6";
+  ex:industry "Higher Education";
+  ex:hasJobSatisfaction "3" .
+
+<http://example.org/country/Greece> a ex:Country;
+  ex:countryName "Greece";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/97> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)";
+  ex:yearsOfCoding "11";
+  ex:yearsAsPro "7";
+  ex:devType "Developer, mobile";
+  ex:hasCountry <http://example.org/country/India>;
+  ex:workExperience "7";
+  ex:industry "Software Development";
+  ex:hasJobSatisfaction "7" .
+
+<http://example.org/dev/98> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "55-64 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Professional degree (JD, MD, Ph.D, Ed.D, etc.)";
+  ex:yearsOfCoding "37";
+  ex:yearsAsPro "33";
+  ex:devType "Developer, full-stack";
+  ex:hasCountry <http://example.org/country/United%20States%20of%20America> .
+
+<http://example.org/dev/99> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "18-24 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Hybrid (some remote, some in-person)";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "4";
+  ex:yearsAsPro "1";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/Italy>;
+  ex:workExperience "1";
+  ex:industry "Transportation, or Supply Chain";
+  ex:hasJobSatisfaction "8" .
+
+<http://example.org/dev/100> a ex:Developer;
+  ex:hasMainBranch "I code primarily as a hobby";
+  ex:age "Under 18 years old";
+  ex:hasEmploymentType "Student, full-time";
+  ex:hasEducationLevel "Primary/elementary school";
+  ex:yearsOfCoding "2";
+  ex:devType "Developer, game or graphics";
+  ex:hasCountry <http://example.org/country/Israel> .
+
+<http://example.org/country/Israel> a ex:Country;
+  ex:countryName "Israel";
+  <http://www.w3.org/2002/07/owl#sameAs> <http://www.wikidata.org/entity/Q30> .
+
+<http://example.org/dev/101> a ex:Developer;
+  ex:hasMainBranch "I am a developer by profession";
+  ex:age "25-34 years old";
+  ex:hasEmploymentType "Employed, full-time";
+  ex:remoteWork "Remote";
+  ex:hasEducationLevel "Secondary school (e.g. American high school, German Realschule or Gymnasium, etc.)";
+  ex:yearsOfCoding "15";
+  ex:yearsAsPro "11";
+  ex:devType "Developer, back-end";
+  ex:hasCountry <http://example.org/country/United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland>;
+  ex:workExperience "10";
+  ex:industry "Fintech";
+  ex:hasJobSatisfaction "2" .
