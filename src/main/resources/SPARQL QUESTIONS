@@ -360,8 +360,8 @@ SELECT ?developer (COUNT(DISTINCT ?language) AS ?numLanguages) WHERE {
   ?developer a ex:Developer ;
              ex:languagesUsed ?language .
 }
-HAVING (?numLanguages > 3)
 GROUP BY ?developer
+HAVING (?numLanguages > 3)
 
 Explanation:
 
