@@ -1,7 +1,6 @@
 package Constants;
 
 public enum CountryData {
-
     AFGHANISTAN("Q1845", "Afghanistan"),
     ALBANIA("Q233", "Albania"),
     ALGERIA("Q262", "Algeria"),

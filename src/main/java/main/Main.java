@@ -7,6 +7,7 @@ import Constants.SurveyColumn;
 import Services.IRIFactory;
 import com.opencsv.CSVReader;
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -20,6 +21,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class Main {
+    private static final ValueFactory vf = SimpleValueFactory.getInstance();
 
     public static void main(String[] args) throws Exception {
 
@@ -30,6 +32,7 @@ public class Main {
         modelBuilder.setNamespace(OntologyIdentity.RDF_PREFIX.getValue(), OntologyIdentity.RDF_NAMESPACE.getValue());
         modelBuilder.setNamespace(OntologyIdentity.RDFS_PREFIX.getValue(), OntologyIdentity.RDFS_NAMESPACE.getValue());
         modelBuilder.setNamespace(OntologyIdentity.OWL_PREFIX.getValue(), OntologyIdentity.OWL_NAMESPACE.getValue());
+        modelBuilder.setNamespace(OntologyIdentity.XSD_PREFIX.getValue(), OntologyIdentity.XSD_NAMESPACE.getValue());
 
         try (CSVReader reader = new CSVReader(new FileReader(filename))) {
             String[] headers = reader.readNext();
@@ -60,7 +63,13 @@ public class Main {
                     if (requiredClass != null) {
                         IRIFactory.checkIRI(modelBuilder, surveyColumn, dev);
                     } else {
-                        modelBuilder.add(predicate.getLocalNameWithPrefix(OntologyIdentity.PREFIX.getValue()), surveyColumn.getValue());
+                        modelBuilder.add(
+                                predicate.getLocalNameWithPrefix(
+                                        OntologyIdentity.PREFIX.getValue()),
+                                        predicate.needsLiteral()
+                                            ? vf.createLiteral(surveyColumn.getValue(), predicate.getXSD())
+                                            : surveyColumn.getValue()
+                        );
                     }
                 }
             }

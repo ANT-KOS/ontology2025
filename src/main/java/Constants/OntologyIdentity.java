@@ -8,7 +8,9 @@ public enum OntologyIdentity {
     RDFS_NAMESPACE("http://www.w3.org/2000/01/rdf-schema#"),
     RDFS_PREFIX("rdfs"),
     OWL_NAMESPACE("http://www.w3.org/2002/07/owl#"),
-    OWL_PREFIX("owl");
+    OWL_PREFIX("owl"),
+    XSD_NAMESPACE("http://www.w3.org/2001/XMLSchema#"),
+    XSD_PREFIX("xsd");
 
     private final String value;
 
