@@ -411,3 +411,215 @@ SELECT ?developer WHERE {
 Explanation:
 
     This query returns developers located in India who admire both Python and JavaScript.
+
+## EVEN MORE COMPLEX
+
+1. Find Developers Who Admire a Specific Set of Technologies and Have More than One Education Level
+
+    Query: Find developers who admire at least two specific programming languages (e.g., Python and JavaScript), and have more than one education level (e.g., Bachelor's + Master's).
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesAdmired ?language ;
+             ex:hasEducationLevel ?educationLevel .
+  FILTER (?language IN (<http://example.org/programmingLanguage/Python>, <http://example.org/programmingLanguage/JavaScript>))
+  FILTER (?educationLevel IN ("Bachelor’s degree", "Master’s degree", "Doctoral degree"))
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?educationLevel) > 1)
+
+Explanation:
+
+    This query finds developers who admire both Python and JavaScript and have multiple educational qualifications. We use HAVING to ensure the developer has more than one distinct education level.
+
+2. Find Developers with Overlapping Skills Across Projects and Locations
+
+    Query: Find developers who have worked on projects in both the U.S. and India and have overlapping skill sets (e.g., they use both React and Node.js).
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:hasCountry ?country ;
+             ex:toolsTechUsed ?tool .
+  FILTER (?country IN (<http://example.org/country/USA>, <http://example.org/country/India>))
+  FILTER (?tool IN (<http://example.org/toolsTech/React>, <http://example.org/toolsTech/Node.js>))
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?country) > 1)
+
+Explanation:
+
+    This query finds developers who have worked on projects in both the U.S. and India and use a combination of React and Node.js. We use HAVING to filter out developers who haven’t worked across multiple countries.
+
+3. Find the Most Common Skill Combinations Admired by Developers
+
+    Query: This query identifies the most common combination of admired programming languages and tools by developers.
+
+SELECT ?language ?tool (COUNT(DISTINCT ?developer) AS ?count) WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesAdmired ?language ;
+             ex:toolsTechAdmired ?tool .
+}
+GROUP BY ?language ?tool
+ORDER BY DESC(?count)
+LIMIT 10
+
+Explanation:
+
+    This query aggregates the admirations of both languages and tools. By counting distinct developers who admire a combination of both, we can see the most admired skill combinations.
+
+4. Find Developers Who Have Used Both Specific Tools in Multiple Projects
+
+    Query: Find developers who have worked on projects using both Docker and Kubernetes, and have contributed to more than one project.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Kubernetes> ;
+             ex:hasProject ?project .
+  ?project ex:hasContributions ?contribution .
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?project) > 1)
+
+Explanation:
+
+    This query looks for developers who have worked with both Docker and Kubernetes and contributed to more than one project. We group by the developer and filter those with more than one distinct project.
+
+5. Find Developers with a Specific Career Path and Their Tools Usage
+
+    Query: Retrieve developers who have switched between front-end and back-end development roles, and find out what tools they use for each type of development.
+
+SELECT ?developer ?frontEndTool ?backEndTool WHERE {
+  ?developer a ex:Developer ;
+             ex:devType "front-end" ;
+             ex:toolsTechUsed ?frontEndTool ;
+             ex:devType "back-end" ;
+             ex:toolsTechUsed ?backEndTool .
+}
+
+Explanation:
+
+    This finds full-stack developers who have experience in both front-end and back-end development and lists the tools they use for each.
+
+6. Developers Who Work on Projects Across Multiple Continents
+
+    Query: Find developers who have worked on projects in multiple continents (e.g., North America, Europe, Asia) and list all the countries they’ve worked in.
+
+SELECT ?developer (GROUP_CONCAT(DISTINCT ?country; SEPARATOR=", ") AS ?countriesWorkedIn) WHERE {
+  ?developer a ex:Developer ;
+             ex:hasCountry ?country ;
+             ex:hasProject ?project .
+  ?project ex:locatedIn ?region .
+  FILTER (?region IN (<http://example.org/region/NorthAmerica>, <http://example.org/region/Europe>, <http://example.org/region/Asia>))
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?region) > 1)
+
+Explanation:
+
+    This query finds developers who have worked in multiple continents (e.g., North America, Europe, and Asia) and lists the countries they have worked in.
+
+7. Find Developers with Specific Skill Sets and Experience Level
+
+    Query: Retrieve developers who have experience with both Python and Docker, but only those who have more than 5 years of experience.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed <http://example.org/programmingLanguage/Python> ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:yearsOfCoding ?years .
+  FILTER (?years > 5)
+}
+
+Explanation:
+
+    This query filters developers who have more than 5 years of experience and use both Python and Docker.
+
+8. Find Developers Who Work on Both Client and Server Side Technologies
+
+    Query: Retrieve developers who work on both client-side and server-side technologies and have worked in at least 2 different countries.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed ?clientSideTool ;
+             ex:toolsTechUsed ?serverSideTool ;
+             ex:hasCountry ?country .
+  FILTER (?clientSideTool IN (<http://example.org/toolsTech/React>, <http://example.org/toolsTech/Vue>))
+  FILTER (?serverSideTool IN (<http://example.org/toolsTech/Node.js>, <http://example.org/toolsTech/Java>))
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?country) > 1)
+
+Explanation:
+
+    This query finds developers who work on both client-side (e.g., React, Vue) and server-side (e.g., Node.js, Java) technologies and have worked in more than one country.
+
+9. Find the Top 5 Countries with the Most Developers Using a Specific Technology
+
+    Query: Retrieve the top 5 countries with the highest number of developers who use Docker.
+
+SELECT ?country (COUNT(?developer) AS ?numDevelopers) WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:hasCountry ?country .
+}
+GROUP BY ?country
+ORDER BY DESC(?numDevelopers)
+LIMIT 5
+
+Explanation:
+
+    This aggregates the number of developers by country who use Docker and returns the top 5 countries with the highest count.
+
+10. Find Developers Using Specific Tools and Skills for Multiple Projects
+
+    Query: Find developers who have worked with both Docker and Kubernetes on at least two distinct projects and admire Python and JavaScript.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Kubernetes> ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/Python> ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/JavaScript> ;
+             ex:hasProject ?project .
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?project) > 1)
+
+Explanation:
+
+    This query retrieves developers who have experience with both Docker and Kubernetes on multiple projects and admire both Python and JavaScript.
+
+11. Find the Most Popular Tools Used Across Different Experience Levels
+
+    Query: Find the most popular tools used by developers, broken down by experience level (e.g., 0-3 years, 4-6 years, 7+ years).
+
+SELECT ?tool ?experienceLevel (COUNT(?developer) AS ?numDevelopers) WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed ?tool ;
+             ex:yearsOfCoding ?years .
+  BIND (IF(?years <= 3, "0-3 years", IF(?years <= 6, "4-6 years", "7+ years")) AS ?experienceLevel)
+}
+GROUP BY ?tool ?experienceLevel
+ORDER BY DESC(?numDevelopers)
+
+Explanation:
+
+    This query breaks down the tools used by developers according to their experience level and orders the tools by popularity within each experience group.
+
+12. Find Developers Who Work on Specific Platforms in Different Countries
+
+    Query: Retrieve developers who have worked on both AWS and Google Cloud, and have worked in more than one country.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:platformsUsed <http://example.org/platform/AWS> ;
+             ex:platformsUsed <http://example.org/platform/GoogleCloud> ;
+             ex:hasCountry ?country .
+}
+GROUP BY ?developer
+HAVING (COUNT(DISTINCT ?country) > 1)
+
+Explanation:
+
+    This query finds developers who have experience with both AWS and Google Cloud, and have worked in multiple countries.
