@@ -1,0 +1,413 @@
+1. Find Developers by Age Group
+
+    Query: Retrieve all developers aged 35-44 years old.
+
+SELECT ?developer ?hasMainBranch ?age WHERE {
+  ?developer a ex:Developer ;
+             ex:hasMainBranch ?hasMainBranch ;
+             ex:age "35-44 years old" .
+}
+
+2. List Developers Using a Specific Tool
+
+    Query: Find developers who use "Visual Studio Code".
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:collabToolsUsed <http://example.org/collabTools/Visual%20Studio%20Code> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+3. Find Developers Who Admire a Specific Programming Language
+
+    Query: Retrieve developers who admire Python.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/Python> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+4. Developers Using a Specific Database
+
+    Query: List developers using PostgreSQL as a database.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:databasesUsed <http://example.org/database/PostgreSQL> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+5. List of Developers and Their Country
+
+    Query: Retrieve a list of developers and their country.
+
+SELECT ?developer ?hasMainBranch ?countryName WHERE {
+  ?developer a ex:Developer ;
+             ex:hasCountry ?country .
+  ?country ex:countryName ?countryName ;
+           a ex:hasCountry .
+}
+
+6. Developers and Their Preferred Development Tools
+
+    Query: Find all developers and the tools they admire.
+
+SELECT ?developer ?toolsAdmired WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechAdmired ?toolsAdmired .
+}
+
+7. Find Developers Who Are Interested in Remote Work
+
+    Query: List developers who work remotely.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:remoteWork "Remote" ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+8. What Programming Languages Do Developers Admire?
+
+    Query: Retrieve all programming languages that developers admire.
+
+SELECT DISTINCT ?programmingLanguage WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesAdmired ?programmingLanguage .
+}
+
+9. Developers with Specific Experience (Years of Coding)
+
+    Query: Find developers with 10+ years of coding experience.
+
+SELECT ?developer ?hasMainBranch ?yearsOfCoding WHERE {
+  ?developer a ex:Developer ;
+             ex:yearsOfCoding ?yearsOfCoding ;
+             ex:hasMainBranch ?hasMainBranch .
+  FILTER (?yearsOfCoding > 10)
+}
+
+10. List of Technologies (Databases, Languages, Platforms) Used by Developers
+
+    Query: Find out all the technologies used by a developer (programming languages, databases, platforms).
+
+SELECT ?developer ?languagesUsed ?databasesUsed ?platformsUsed WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed ?languagesUsed ;
+             ex:databasesUsed ?databasesUsed ;
+             ex:platformsUsed ?platformsUsed .
+}
+
+11. Which Developers Admire a Specific Platform (e.g., AWS)?
+
+    Query: Retrieve developers who admire AWS as a platform.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:platformsAdmired <http://example.org/platform/Amazon%20Web%20Services%20(AWS)> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+12. Find Developers Who Have a Bachelor's Degree
+
+    Query: List all developers with a Bachelor's degree.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:hasEducationLevel "Bachelor’s degree (B.A., B.S., B.Eng., etc.)" ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+13. Find Developers Who Are Learning to Code
+
+    Query: Retrieve developers who are learning to code.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:hasMainBranch "I am learning to code" ;
+             ex:hasEducationLevel "Some college/university study without earning a degree" .
+}
+
+14. What Tools Do Developers Use (Filter by Tech)?
+
+    Query: List developers using Docker and other technologies.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+15. Developers' Favorite Collaboration Tools
+
+    Query: Retrieve all developers and the collaboration tools they admire.
+
+SELECT ?developer ?collabToolsAdmired WHERE {
+  ?developer a ex:Developer ;
+             ex:collabToolsAdmired ?collabToolsAdmired .
+}
+
+16. Find Developers by Developer Type
+
+    Query: List all developers who are full-stack.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:devType "Developer, full-stack" ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+17. Developers and Their Preferred Programming Languages
+
+    Query: List the programming languages used by each developer.
+
+SELECT ?developer ?languagesUsed WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed ?languagesUsed .
+}
+
+18. Find All Technologies a Developer Has Used
+
+    Query: Retrieve all technologies used by a specific developer (e.g., dev/2).
+
+SELECT ?developer ?languagesUsed ?databasesUsed ?platformsUsed ?webFrameworksUsed ?toolsTechUsed WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed ?languagesUsed ;
+             ex:databasesUsed ?databasesUsed ;
+             ex:platformsUsed ?platformsUsed ;
+             ex:webFrameworksUsed ?webFrameworksUsed ;
+             ex:toolsTechUsed ?toolsTechUsed .
+  FILTER (?developer = <http://example.org/dev/2>)
+}
+
+19. Find Developers Who Use Specific Platforms
+
+    Query: Retrieve developers using the "Heroku" platform.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:platformsUsed <http://example.org/platform/Heroku> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+20. List All Developers Who Admire Postgres
+
+    Query: List developers who admire PostgreSQL.
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:databasesAdmired <http://example.org/database/PostgreSQL> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+### MORE COMPLEX
+1. Find the Most Common Skills Admired by Developers
+
+    Query: This query identifies which skills (programming languages, tools, databases, etc.) are admired the most by developers, based on the count of developers admiring them.
+
+SELECT ?skill (COUNT(?developer) AS ?numDevelopers) WHERE {
+  ?developer a ex:Developer ;
+             ex:admireSkill ?skill .
+}
+GROUP BY ?skill
+ORDER BY DESC(?numDevelopers)
+LIMIT 10
+
+Explanation:
+
+    This counts how many developers admire each skill and returns the top 10 skills with the most admiration.
+
+2. Find Developers Who Use a Specific Tool and a Specific Language
+
+    Query: List developers who use both a specific tool (e.g., Docker) and a programming language (e.g., Python).
+
+SELECT ?developer ?hasMainBranch WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:languagesUsed <http://example.org/programmingLanguage/Python> ;
+             ex:hasMainBranch ?hasMainBranch .
+}
+
+Explanation:
+
+    This query retrieves developers who use both Docker and Python. You can add more conditions for other tools or languages.
+
+3. Find Developers with the Highest Years of Coding Experience
+
+    Query: Retrieve the developer(s) with the most years of coding experience and their details.
+
+SELECT ?developer ?yearsOfCoding WHERE {
+  ?developer a ex:Developer ;
+             ex:yearsOfCoding ?yearsOfCoding .
+}
+ORDER BY DESC(?yearsOfCoding)
+LIMIT 1
+
+Explanation:
+
+    This query finds the developer with the highest number of years of coding experience. You could modify it to find the top 3 or more by adjusting the LIMIT.
+
+4. Developers Using Specific Platforms and Tools
+
+    Query: Get developers who use both a specific platform (e.g., Heroku) and a specific tool (e.g., Visual Studio Code).
+
+SELECT ?developer ?platform ?tool WHERE {
+  ?developer a ex:Developer ;
+             ex:platformsUsed <http://example.org/platform/Heroku> ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Visual%20Studio%20Code> ;
+             ex:hasMainBranch ?platform ;
+             ex:toolsTechAdmired ?tool .
+}
+
+Explanation:
+
+    This retrieves developers using both Heroku and Visual Studio Code, along with any additional details you want to include in the query.
+
+5. Find the Average Age of Developers Who Admire a Specific Language
+
+    Query: Calculate the average age of developers who admire Python.
+
+SELECT (AVG(?age) AS ?avgAge) WHERE {
+  ?developer a ex:Developer ;
+             ex:age ?age ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/Python> .
+}
+
+Explanation:
+
+    This calculates the average age of developers who admire Python. You can replace "Python" with any other programming language.
+
+6. Find Developers with Multiple Tools in Common
+
+    Query: Retrieve developers who use both Docker and Kubernetes.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Kubernetes> .
+}
+
+Explanation:
+
+    This finds developers who are using both Docker and Kubernetes. You can extend this to more tools.
+
+7. Find Developers with Multiple Countries of Origin
+
+    Query: List developers who have worked or lived in more than one country (via hasCountry).
+
+SELECT ?developer (COUNT(DISTINCT ?country) AS ?numCountries) WHERE {
+  ?developer a ex:Developer ;
+             ex:hasCountry ?country .
+}
+HAVING (?numCountries > 1)
+GROUP BY ?developer
+
+Explanation:
+
+    This query finds developers who have lived or worked in multiple countries (the count of distinct countries is greater than 1).
+
+8. Find the Most Popular Combination of Languages and Tools
+
+    Query: Retrieve the most popular combination of programming languages and tools that developers use. This combines programming languages and tools together and counts how often each pair appears.
+
+SELECT ?language ?tool (COUNT(?developer) AS ?numDevelopers) WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed ?language ;
+             ex:toolsTechUsed ?tool .
+}
+GROUP BY ?language ?tool
+ORDER BY DESC(?numDevelopers)
+LIMIT 5
+
+Explanation:
+
+    This query retrieves the top 5 most popular combinations of languages and tools used by developers.
+
+9. Developers Who Use Tools/Platforms from a Specific Region
+
+    Query: Retrieve developers who use tools or platforms that are region-specific, such as developers using platforms built in a particular country or region.
+
+SELECT ?developer ?tool WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed ?tool ;
+             ex:hasCountry <http://example.org/country/USA> .
+}
+
+Explanation:
+
+    This retrieves developers using tools/technologies associated with the USA. You can modify the country or region as needed.
+
+10. Find Developers Based on Multiple Educational Qualifications
+
+    Query: Retrieve developers with at least a Bachelor’s degree and who have a secondary education (e.g., Master's or PhD).
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:hasEducationLevel ?educationLevel .
+  FILTER (?educationLevel IN ("Bachelor’s degree (B.A., B.S., B.Eng., etc.)", "Master’s degree", "Doctoral degree"))
+}
+
+Explanation:
+
+    This query finds developers with at least a Bachelor’s degree and who might have further education qualifications, such as a Master's or Doctoral degree.
+
+11. Find Developers Using Multiple Programming Languages
+
+    Query: Retrieve developers who use more than 3 programming languages.
+
+SELECT ?developer (COUNT(DISTINCT ?language) AS ?numLanguages) WHERE {
+  ?developer a ex:Developer ;
+             ex:languagesUsed ?language .
+}
+HAVING (?numLanguages > 3)
+GROUP BY ?developer
+
+Explanation:
+
+    This finds developers who use more than 3 distinct programming languages. You can adjust the number as needed.
+
+12. Find Developers with Specific Career Paths
+
+    Query: Identify developers who have worked in both front-end and back-end development (i.e., full-stack developers).
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:devType "Developer, front-end" .
+  ?developer a ex:Developer ;
+             ex:devType "Developer, back-end" .
+}
+
+Explanation:
+
+    This query finds developers who have experience with both front-end and back-end development (i.e., full-stack).
+
+13. Find Developers Based on Experience with Certain Tools
+
+    Query: Retrieve developers who have more than 5 years of experience with a specific tool (e.g., Docker).
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:toolsTechUsed <http://example.org/toolsTech/Docker> ;
+             ex:yearsOfCoding ?years .
+  FILTER (?years > 5)
+}
+
+Explanation:
+
+    This retrieves developers who have been coding for over 5 years and also use Docker.
+
+14. Developers in a Specific Location Who Admire Specific Skills
+
+    Query: Find developers in a specific country (e.g., India) who admire Python and JavaScript.
+
+SELECT ?developer WHERE {
+  ?developer a ex:Developer ;
+             ex:hasCountry <http://example.org/country/India> ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/Python> ;
+             ex:languagesAdmired <http://example.org/programmingLanguage/JavaScript> .
+}
+
+Explanation:
+
+    This query returns developers located in India who admire both Python and JavaScript.
