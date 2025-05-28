@@ -62,9 +62,9 @@ public class IRIFactory {
             }
 
             modelBuilder.subject(fromSubject)
-                    .add(OntologyIdentity.NAMESPACE.getValue() + requiredPredicate.getLocalName() + "/", iriToCheck);
+                    .add(vf.createIRI(OntologyIdentity.NAMESPACE.getValue(), requiredPredicate.getLocalName()), iriToCheck);
 
-            IRI predicateProperty = SimpleValueFactory.getInstance().createIRI(OntologyIdentity.NAMESPACE.getValue() + requiredPredicate.getLocalName() + "/");
+            IRI predicateProperty = SimpleValueFactory.getInstance().createIRI(OntologyIdentity.NAMESPACE.getValue(), requiredPredicate.getLocalName());
             modelBuilder.subject(predicateProperty)
                     .add(RDF.TYPE, OWL.OBJECTPROPERTY)
                     .add(RDFS.DOMAIN, SimpleValueFactory

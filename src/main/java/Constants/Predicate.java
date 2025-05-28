@@ -147,8 +147,7 @@ public enum Predicate {
         return switch (this) {
             case COMPENSATION,
                  HAS_JOB_SATISFACTION,
-                 WORK_EXPERIENCE,
-                 YEARS_OF_CODING -> XSD.INT;
+                 WORK_EXPERIENCE -> XSD.INT;
             default -> XSD.STRING;
         };
     }
