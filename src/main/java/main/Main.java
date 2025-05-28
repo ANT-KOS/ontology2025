@@ -48,7 +48,7 @@ public class Main {
                     String value = row[i];
 
                     for (SurveyColumn column : SurveyColumn.values()) {
-                        if (column.getFieldName().equals(header) && !value.equals("NA")) {
+                        if (column.getFieldName().equals(header) && !value.equals("NA") && !value.isEmpty()) {
                             surveyRow.put(column, value);
                             break;
                         }

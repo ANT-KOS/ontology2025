@@ -564,7 +564,6 @@ ex:embeddedAdmired a owl:ObjectProperty;
   ex:collabToolsWanted <http://example.org/CollabTools/Vim>;
   ex:collabToolsAdmired <http://example.org/CollabTools/Vim>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Other%20(please%20specify):>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/GitHub%20Discussions>, <http://example.org/OfficeStackAsync/Markdown%20File>,
     <http://example.org/OfficeStackAsync/Obsidian>, <http://example.org/OfficeStackAsync/Stack%20Overflow%20for%20Teams>;
   ex:officeAsyncWanted <http://example.org/OfficeStackAsync/GitHub%20Discussions>, <http://example.org/OfficeStackAsync/Markdown%20File>,
@@ -601,9 +600,6 @@ ex:embeddedAdmired a owl:ObjectProperty;
 
 <http://example.org/OperatingSystem/Other%20(please%20specify):> a ex:OperatingSystem;
   ex:opSysName "Other (please specify):" .
-
-<http://example.org/OperatingSystem/> a ex:OperatingSystem;
-  ex:opSysName "" .
 
 <http://example.org/OfficeStackAsync/GitHub%20Discussions> a ex:OfficeStackAsync;
   ex:officeAsyncName "GitHub Discussions" .
@@ -685,7 +681,6 @@ ex:officeAsyncAdmired a owl:ObjectProperty;
     <http://example.org/CollabTools/Visual%20Studio%20Code>, <http://example.org/CollabTools/Xcode>;
   ex:opSysPersonal <http://example.org/OperatingSystem/iOS>, <http://example.org/OperatingSystem/MacOS>,
     <http://example.org/OperatingSystem/Ubuntu>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Markdown%20File>;
   ex:officeAsyncWanted <http://example.org/OfficeStackAsync/Markdown%20File>;
   ex:officeAsyncAdmired <http://example.org/OfficeStackAsync/Markdown%20File>;
@@ -951,7 +946,10 @@ ex:officeAsyncAdmired a owl:ObjectProperty;
   ex:officeSyncWanted <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
     <http://example.org/OfficeStackSync/Microsoft%20Teams>, <http://example.org/OfficeStackSync/Slack>,
     <http://example.org/OfficeStackSync/Zoom>;
-  ex:officeSyncAdmired <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet> .
+  ex:officeSyncAdmired <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
+    <http://example.org/OfficeStackSync/Microsoft%20Teams>, <http://example.org/OfficeStackSync/Slack>,
+    <http://example.org/OfficeStackSync/Zoom>;
+  ex:WorkExp "15"^^xsd:int .
 
 <http://example.org/ProgrammingLanguage/Ruby> a ex:ProgrammingLanguage;
   ex:programmingLanguageName "Ruby" .
@@ -980,10 +978,7 @@ ex:officeAsyncAdmired a owl:ObjectProperty;
 <http://example.org/OfficeStackAsync/Smartsheet> a ex:OfficeStackAsync;
   ex:officeAsyncName "Smartsheet" .
 
-<http://example.org/Developer/11> ex:officeSyncAdmired <http://example.org/OfficeStackSync/Microsoft%20Teams>,
-    <http://example.org/OfficeStackSync/Slack>, <http://example.org/OfficeStackSync/Zoom>;
-  ex:WorkExp "15"^^xsd:int;
-  ex:Industry "Healthcare";
+<http://example.org/Developer/11> ex:Industry "Healthcare";
   ex:JobSat "8"^^xsd:int .
 
 ex:Industry a owl:DatatypeProperty;
@@ -1318,7 +1313,6 @@ ex:JobSat a owl:DatatypeProperty;
   ex:collabToolsWanted <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:collabToolsAdmired <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Arch>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord>;
   ex:officeSyncWanted <http://example.org/OfficeStackSync/Discord>;
   ex:officeSyncAdmired <http://example.org/OfficeStackSync/Discord> .
@@ -1819,15 +1813,18 @@ ex:JobSat a owl:DatatypeProperty;
   ex:databasesUsed <http://example.org/Database/Microsoft%20Access>, <http://example.org/Database/MySQL>,
     <http://example.org/Database/Snowflake>, <http://example.org/Database/SQLite>;
   ex:databasesWanted <http://example.org/Database/MongoDB>;
-  ex:platformsUsed <http://example.org/Platform/Amazon%20Web%20Services%20(AWS)> .
+  ex:platformsUsed <http://example.org/Platform/Amazon%20Web%20Services%20(AWS)>, <http://example.org/Platform/Microsoft%20Azure>;
+  ex:webFrameworksUsed <http://example.org/WebFramework/ASP.NET>, <http://example.org/WebFramework/ASP.NET%20CORE>,
+    <http://example.org/WebFramework/jQuery>;
+  ex:webFrameworksWanted <http://example.org/WebFramework/Angular> .
 
 <http://example.org/Database/Snowflake> a ex:Database;
   ex:databaseName "Snowflake" .
 
-<http://example.org/Developer/26> ex:platformsUsed <http://example.org/Platform/Microsoft%20Azure>;
-  ex:webFrameworksUsed <http://example.org/WebFramework/ASP.NET>, <http://example.org/WebFramework/ASP.NET%20CORE>,
-    <http://example.org/WebFramework/jQuery>;
-  ex:webFrameworksWanted <http://example.org/WebFramework/Angular>, <http://example.org/WebFramework/AngularJS>,
+<http://example.org/WebFramework/AngularJS> a ex:WebFramework;
+  ex:webFrameworkName "AngularJS" .
+
+<http://example.org/Developer/26> ex:webFrameworksWanted <http://example.org/WebFramework/AngularJS>,
     <http://example.org/WebFramework/Blazor>, <http://example.org/WebFramework/Node.js>,
     <http://example.org/WebFramework/React>;
   ex:toolsTechUsed <http://example.org/ToolsTech/Docker>, <http://example.org/ToolsTech/MSBuild>,
@@ -1843,9 +1840,6 @@ ex:JobSat a owl:DatatypeProperty;
   ex:officeAsyncWanted <http://example.org/OfficeStackAsync/Azure%20Devops>;
   ex:officeAsyncAdmired <http://example.org/OfficeStackAsync/Azure%20Devops>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Microsoft%20Teams> .
-
-<http://example.org/WebFramework/AngularJS> a ex:WebFramework;
-  ex:webFrameworkName "AngularJS" .
 
 <http://example.org/ToolsTech/Visual%20Studio%20Solution> a ex:ToolsTech;
   ex:toolsTechName "Visual Studio Solution" .
@@ -2564,7 +2558,9 @@ ex:JobSat a owl:DatatypeProperty;
   ex:databasesAdmired <http://example.org/Database/H2>, <http://example.org/Database/MySQL>;
   ex:platformsUsed <http://example.org/Platform/Google%20Cloud>, <http://example.org/Platform/Oracle%20Cloud%20Infrastructure%20(OCI)>;
   ex:platformsWanted <http://example.org/Platform/Google%20Cloud>, <http://example.org/Platform/Oracle%20Cloud%20Infrastructure%20(OCI)>;
-  ex:platformsAdmired <http://example.org/Platform/Google%20Cloud>, <http://example.org/Platform/Oracle%20Cloud%20Infrastructure%20(OCI)> .
+  ex:platformsAdmired <http://example.org/Platform/Google%20Cloud>, <http://example.org/Platform/Oracle%20Cloud%20Infrastructure%20(OCI)>;
+  ex:webFrameworksUsed <http://example.org/WebFramework/ASP.NET>, <http://example.org/WebFramework/ASP.NET%20CORE>,
+    <http://example.org/WebFramework/Spring%20Boot> .
 
 <http://example.org/Country/Austria> a ex:Country;
   ex:countryName "Austria" .
@@ -2578,9 +2574,10 @@ ex:JobSat a owl:DatatypeProperty;
 <http://example.org/Database/Neo4J> a ex:Database;
   ex:databaseName "Neo4J" .
 
-<http://example.org/Developer/37> ex:webFrameworksUsed <http://example.org/WebFramework/ASP.NET>,
-    <http://example.org/WebFramework/ASP.NET%20CORE>, <http://example.org/WebFramework/Spring%20Boot>;
-  ex:webFrameworksWanted <http://example.org/WebFramework/Spring%20Boot>;
+<http://example.org/WebFramework/Spring%20Boot> a ex:WebFramework;
+  ex:webFrameworkName "Spring Boot" .
+
+<http://example.org/Developer/37> ex:webFrameworksWanted <http://example.org/WebFramework/Spring%20Boot>;
   ex:webFrameworksAdmired <http://example.org/WebFramework/Spring%20Boot>;
   ex:toolsTechUsed <http://example.org/ToolsTech/Gradle>, <http://example.org/ToolsTech/Kubernetes>,
     <http://example.org/ToolsTech/Maven%20(build%20tool)>;
@@ -2604,9 +2601,6 @@ ex:JobSat a owl:DatatypeProperty;
     <http://example.org/OfficeStackSync/Zoom>;
   ex:officeSyncWanted <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Zoom>;
   ex:officeSyncAdmired <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Zoom> .
-
-<http://example.org/WebFramework/Spring%20Boot> a ex:WebFramework;
-  ex:webFrameworkName "Spring Boot" .
 
 <http://example.org/OfficeStackAsync/Airtable> a ex:OfficeStackAsync;
   ex:officeAsyncName "Airtable" .
@@ -3996,7 +3990,11 @@ ex:JobSat a owl:DatatypeProperty;
   ex:toolsTechAdmired <http://example.org/ToolsTech/Ninja>;
   ex:collabToolsUsed <http://example.org/CollabTools/CLion>, <http://example.org/CollabTools/Qt%20Creator>,
     <http://example.org/CollabTools/Vim>;
-  ex:collabToolsWanted <http://example.org/CollabTools/CLion>, <http://example.org/CollabTools/Vim> .
+  ex:collabToolsWanted <http://example.org/CollabTools/CLion>, <http://example.org/CollabTools/Vim>;
+  ex:collabToolsAdmired <http://example.org/CollabTools/CLion>, <http://example.org/CollabTools/Vim>;
+  ex:opSysPersonal <http://example.org/OperatingSystem/Ubuntu>;
+  ex:opSysProfessional <http://example.org/OperatingSystem/Ubuntu>;
+  ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Jira> .
 
 <http://example.org/Country/Nepal> a ex:Country;
   ex:countryName "Nepal" .
@@ -4013,15 +4011,10 @@ ex:JobSat a owl:DatatypeProperty;
 <http://example.org/CollabTools/Qt%20Creator> a ex:CollabTools;
   ex:collabToolsName "Qt Creator" .
 
-<http://example.org/Developer/61> ex:collabToolsAdmired <http://example.org/CollabTools/CLion>,
-    <http://example.org/CollabTools/Vim>;
-  ex:opSysPersonal <http://example.org/OperatingSystem/Ubuntu>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/Ubuntu>;
-  ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Jira>;
-  ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
-    <http://example.org/OfficeStackSync/Jitsi>, <http://example.org/OfficeStackSync/Microsoft%20Teams>,
-    <http://example.org/OfficeStackSync/Slack>, <http://example.org/OfficeStackSync/Telegram>,
-    <http://example.org/OfficeStackSync/Zoom>;
+<http://example.org/Developer/61> ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord>,
+    <http://example.org/OfficeStackSync/Google%20Meet>, <http://example.org/OfficeStackSync/Jitsi>,
+    <http://example.org/OfficeStackSync/Microsoft%20Teams>, <http://example.org/OfficeStackSync/Slack>,
+    <http://example.org/OfficeStackSync/Telegram>, <http://example.org/OfficeStackSync/Zoom>;
   ex:officeSyncWanted <http://example.org/OfficeStackSync/Jitsi>, <http://example.org/OfficeStackSync/Telegram>;
   ex:officeSyncAdmired <http://example.org/OfficeStackSync/Jitsi>, <http://example.org/OfficeStackSync/Telegram> .
 
@@ -4241,7 +4234,6 @@ ex:JobSat a owl:DatatypeProperty;
     <http://example.org/CollabTools/PhpStorm>, <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Android>, <http://example.org/OperatingSystem/Windows>,
     <http://example.org/OperatingSystem/Windows%20Subsystem%20for%20Linux%20(WSL)>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Notion>;
   ex:officeAsyncWanted <http://example.org/OfficeStackAsync/Notion>;
   ex:officeAsyncAdmired <http://example.org/OfficeStackAsync/Notion>;
@@ -4527,8 +4519,7 @@ ex:JobSat a owl:DatatypeProperty;
   ex:LearnCodeOnline "Technical documentation;Books;Written Tutorials;Stack Overflow;Interactive tutorial";
   ex:YearsCode "2";
   ex:hasCountry <http://example.org/Country/Australia>;
-  ex:opSysPersonal <http://example.org/OperatingSystem/Windows>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/> .
+  ex:opSysPersonal <http://example.org/OperatingSystem/Windows> .
 
 <http://example.org/Developer/72> a ex:Developer;
   ex:MainBranch "I am not primarily a developer, but I write code sometimes as part of my work/studies";
@@ -4640,7 +4631,6 @@ ex:JobSat a owl:DatatypeProperty;
     <http://example.org/CollabTools/Neovim>, <http://example.org/CollabTools/RStudio>,
     <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:opSysPersonal <http://example.org/OperatingSystem/MacOS>, <http://example.org/OperatingSystem/Windows>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/GitHub%20Discussions>, <http://example.org/OfficeStackAsync/Markdown%20File>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
     <http://example.org/OfficeStackSync/Slack>, <http://example.org/OfficeStackSync/Whatsapp>,
@@ -4710,13 +4700,12 @@ ex:CompTotal a owl:DatatypeProperty;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Skype>;
   ex:officeSyncWanted <http://example.org/OfficeStackSync/Skype>;
   ex:officeSyncAdmired <http://example.org/OfficeStackSync/Skype>;
-  ex:WorkExp "1"^^xsd:int .
+  ex:WorkExp "1"^^xsd:int;
+  ex:Industry "Software Development";
+  ex:JobSat "9"^^xsd:int .
 
 <http://example.org/Country/Czech%20Republic> a ex:Country;
   ex:countryName "Czech Republic" .
-
-<http://example.org/Developer/74> ex:Industry "Software Development";
-  ex:JobSat "9"^^xsd:int .
 
 <http://example.org/Developer/75> a ex:Developer;
   ex:MainBranch "I am a developer by profession";
@@ -4890,7 +4879,6 @@ ex:CompTotal a owl:DatatypeProperty;
     <http://example.org/CollabTools/Vim>, <http://example.org/CollabTools/Visual%20Studio>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Android>, <http://example.org/OperatingSystem/Ubuntu>,
     <http://example.org/OperatingSystem/Windows>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Asana>, <http://example.org/OfficeStackAsync/Clickup>,
     <http://example.org/OfficeStackAsync/Miro>, <http://example.org/OfficeStackAsync/Monday.com>;
   ex:officeAsyncWanted <http://example.org/OfficeStackAsync/Notion>, <http://example.org/OfficeStackAsync/Stack%20Overflow%20for%20Teams>;
@@ -5445,7 +5433,6 @@ ex:CompTotal a owl:DatatypeProperty;
   ex:databasesWanted <http://example.org/Database/Microsoft%20SQL%20Server>, <http://example.org/Database/SQLite>;
   ex:databasesAdmired <http://example.org/Database/Microsoft%20SQL%20Server>;
   ex:opSysPersonal <http://example.org/OperatingSystem/ChromeOS>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord> .
 
 <http://example.org/Developer/87> a ex:Developer;
@@ -5933,7 +5920,6 @@ ex:CompTotal a owl:DatatypeProperty;
   ex:collabToolsAdmired <http://example.org/CollabTools/Nano>, <http://example.org/CollabTools/Notepad++>,
     <http://example.org/CollabTools/Visual%20Studio>, <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Windows>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:WorkExp "6"^^xsd:int;
   ex:Industry "Higher Education";
   ex:JobSat "3"^^xsd:int .
@@ -5987,7 +5973,6 @@ ex:CompTotal a owl:DatatypeProperty;
     <http://example.org/CollabTools/Visual%20Studio>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Red%20Hat>, <http://example.org/OperatingSystem/Solaris>,
     <http://example.org/OperatingSystem/Ubuntu>, <http://example.org/OperatingSystem/Windows>;
-  ex:opSysProfessional <http://example.org/OperatingSystem/>;
   ex:officeAsyncUsed <http://example.org/OfficeStackAsync/Confluence>, <http://example.org/OfficeStackAsync/Doxygen>,
     <http://example.org/OfficeStackAsync/Jira>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Microsoft%20Teams> .
@@ -6088,12 +6073,7 @@ ex:CompTotal a owl:DatatypeProperty;
     <http://example.org/CollabTools/Notepad++>, <http://example.org/CollabTools/PyCharm>,
     <http://example.org/CollabTools/Vim>, <http://example.org/CollabTools/Visual%20Studio>,
     <http://example.org/CollabTools/Visual%20Studio%20Code>;
-  ex:collabToolsAdmired <http://example.org/CollabTools/Notepad++> .
-
-<http://example.org/Country/Israel> a ex:Country;
-  ex:countryName "Israel" .
-
-<http://example.org/Developer/100> ex:collabToolsAdmired <http://example.org/CollabTools/Visual%20Studio>,
+  ex:collabToolsAdmired <http://example.org/CollabTools/Notepad++>, <http://example.org/CollabTools/Visual%20Studio>,
     <http://example.org/CollabTools/Visual%20Studio%20Code>;
   ex:opSysPersonal <http://example.org/OperatingSystem/Windows>;
   ex:opSysProfessional <http://example.org/OperatingSystem/Windows>;
@@ -6102,8 +6082,12 @@ ex:CompTotal a owl:DatatypeProperty;
   ex:officeAsyncAdmired <http://example.org/OfficeStackAsync/GitHub%20Discussions>;
   ex:officeSyncUsed <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
     <http://example.org/OfficeStackSync/Zoom>;
-  ex:officeSyncWanted <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
-    <http://example.org/OfficeStackSync/Zoom>;
+  ex:officeSyncWanted <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet> .
+
+<http://example.org/Country/Israel> a ex:Country;
+  ex:countryName "Israel" .
+
+<http://example.org/Developer/100> ex:officeSyncWanted <http://example.org/OfficeStackSync/Zoom>;
   ex:officeSyncAdmired <http://example.org/OfficeStackSync/Discord>, <http://example.org/OfficeStackSync/Google%20Meet>,
     <http://example.org/OfficeStackSync/Zoom> .
 
