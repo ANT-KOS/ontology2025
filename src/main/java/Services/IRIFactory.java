@@ -55,7 +55,7 @@ public class IRIFactory {
                             + columnValue);
 
             modelBuilder.subject(iriToCheck)
-                    .add(RDF.TYPE, requiredPredicate.getLocalNameWithPrefix(OntologyIdentity.PREFIX.getValue()));
+                    .add(RDF.TYPE, ontologyClass.getClassName(OntologyIdentity.PREFIX.getValue()));
             for (Predicate predicate : ontologyClass.getPredicatesByOntologyClass()) {
                 modelBuilder.add(predicate.getLocalNameWithPrefix(OntologyIdentity.PREFIX.getValue()), columnValue);
             }
@@ -71,7 +71,8 @@ public class IRIFactory {
                             .createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName()))
                     .add(RDFS.RANGE, SimpleValueFactory
                             .getInstance()
-                            .createIRI(OntologyIdentity.NAMESPACE.getValue() + ontologyClass.getClassName()));
+                            .createIRI(OntologyIdentity.NAMESPACE.getValue() + ontologyClass.getClassName()))
+                    .add(RDFS.LABEL, requiredPredicate.getLocalName());
         }
     }
 }

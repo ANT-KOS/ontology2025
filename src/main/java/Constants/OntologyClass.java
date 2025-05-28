@@ -3,20 +3,20 @@ package Constants;
 import java.util.ArrayList;
 
 public enum OntologyClass {
-    DEVELOPER("developer"),
-    COUNTRY("country"),
-    PROGRAMMING_LANGUAGE("programmingLanguage"),
-    DATABASE("database"),
-    PLATFORM("platform"),
-    WEB_FRAMEWORK("webFramework"),
-    EMBEDDED("embedded"),
-    TOOLS_TECH("toolsTech"),
-    COLLAB_TOOL("collabTools"),
-    OFFICE_STACK_ASYNC("officeStackAsync"),
-    OFFICE_STACK_SYNC("officeStackSync"),
-    AI_SEARCH("aiSearch"),
-    OPERATING_SYSTEM("operatingSystem"),
-    FRAMEWORK("framework");
+    DEVELOPER("Developer"),
+    COUNTRY("Country"),
+    PROGRAMMING_LANGUAGE("ProgrammingLanguage"),
+    DATABASE("Database"),
+    PLATFORM("Platform"),
+    WEB_FRAMEWORK("WebFramework"),
+    EMBEDDED("Embedded"),
+    TOOLS_TECH("ToolsTech"),
+    COLLAB_TOOL("CollabTools"),
+    OFFICE_STACK_ASYNC("OfficeStackAsync"),
+    OFFICE_STACK_SYNC("OfficeStackSync"),
+    AI_SEARCH("AiSearch"),
+    OPERATING_SYSTEM("OperatingSystem"),
+    FRAMEWORK("Framework");
 
     private final String className;
 
@@ -26,6 +26,10 @@ public enum OntologyClass {
 
     public String getClassName() {
         return className;
+    }
+
+    public String getClassName(String prefix) {
+        return prefix + ":" + className;
     }
 
     public ArrayList<Predicate> getPredicatesByOntologyClass()

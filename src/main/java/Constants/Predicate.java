@@ -131,6 +131,9 @@ public enum Predicate {
             case WEBFRAME_ADMIRED,
                  WEBFRAME_USED,
                  WEBFRAME_WANT -> OntologyClass.WEB_FRAMEWORK;
+            case EMBEDDED_ADMIRED,
+                 EMBEDDED_USED,
+                 EMBEDDED_WANT -> OntologyClass.EMBEDDED;
             default -> null;
         };
     }
