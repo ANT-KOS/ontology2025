@@ -78,7 +78,7 @@ public enum Predicate {
         this.needsLiteral = needsLiteral;
     }
 
-    public SurveyColumn column() {
+    public SurveyColumn getSurveyColumn() {
         return column;
     }
 
@@ -148,9 +148,8 @@ public enum Predicate {
             case COMPENSATION,
                  HAS_JOB_SATISFACTION,
                  WORK_EXPERIENCE,
-                 YEARS_AS_PRO,
                  YEARS_OF_CODING -> XSD.INT;
-            default -> null;
+            default -> XSD.STRING;
         };
     }
 

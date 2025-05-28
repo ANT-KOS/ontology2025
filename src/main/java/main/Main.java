@@ -10,7 +10,9 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
 
@@ -53,7 +55,7 @@ public class Main {
                     }
                 }
 
-                IRI dev = SimpleValueFactory.getInstance().createIRI(OntologyIdentity.NAMESPACE.getValue() + "dev/" + surveyRow.get(SurveyColumn.RESPONSE_ID));
+                IRI dev = SimpleValueFactory.getInstance().createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName() + "/" + surveyRow.get(SurveyColumn.RESPONSE_ID));
                 surveyRow.remove(SurveyColumn.RESPONSE_ID);
 
                 modelBuilder.subject(dev).add(RDF.TYPE, "ex:Developer");
@@ -63,13 +65,15 @@ public class Main {
                     if (requiredClass != null) {
                         IRIFactory.checkIRI(modelBuilder, surveyColumn, dev);
                     } else {
-                        modelBuilder.add(
-                                predicate.getLocalNameWithPrefix(
-                                        OntologyIdentity.PREFIX.getValue()),
-                                        predicate.needsLiteral()
-                                            ? vf.createLiteral(surveyColumn.getValue(), predicate.getXSD())
-                                            : surveyColumn.getValue()
+                        modelBuilder
+                                .add(
+                                vf.createIRI(OntologyIdentity.NAMESPACE.getValue(), surveyColumn.getKey().getFieldName()),
+                                predicate.needsLiteral()
+                                        ? vf.createLiteral(surveyColumn.getValue(), predicate.getXSD())
+                                        : surveyColumn.getValue()
                         );
+
+                        addDataProperties(modelBuilder, dev, predicate);
                     }
                 }
             }
@@ -81,5 +85,18 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void addDataProperties(ModelBuilder modelBuilder, IRI fromSubject, Predicate predicate)
+    {
+        modelBuilder.subject(vf.createIRI(OntologyIdentity.NAMESPACE.getValue(), predicate.getSurveyColumn().getFieldName()))
+                .add(RDF.TYPE, OWL.DATATYPEPROPERTY)
+                .add(RDFS.DOMAIN, SimpleValueFactory
+                        .getInstance()
+                        .createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName()))
+                .add(RDFS.RANGE, predicate.getXSD())
+                .add(RDFS.LABEL, predicate.getSurveyColumn().getFieldName());
+
+        modelBuilder.subject(fromSubject);
     }
 }

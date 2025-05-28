@@ -8,6 +8,7 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
@@ -61,11 +62,11 @@ public class IRIFactory {
             }
 
             modelBuilder.subject(fromSubject)
-                    .add(requiredPredicate.getLocalNameWithPrefix(OntologyIdentity.PREFIX.getValue()), iriToCheck);
+                    .add(OntologyIdentity.NAMESPACE.getValue() + requiredPredicate.getLocalName() + "/", iriToCheck);
 
             IRI predicateProperty = SimpleValueFactory.getInstance().createIRI(OntologyIdentity.NAMESPACE.getValue() + requiredPredicate.getLocalName() + "/");
             modelBuilder.subject(predicateProperty)
-                    .add(RDF.TYPE, RDF.PROPERTY)
+                    .add(RDF.TYPE, OWL.OBJECTPROPERTY)
                     .add(RDFS.DOMAIN, SimpleValueFactory
                             .getInstance()
                             .createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName()))
