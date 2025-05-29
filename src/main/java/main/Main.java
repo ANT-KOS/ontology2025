@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
     private static final ValueFactory vf = SimpleValueFactory.getInstance();
@@ -90,6 +91,41 @@ public class Main {
             }
         }
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Model Saved ! Do you want to save it to file or upload it in the local GraphDB server ?");
+        System.out.println("1. Upload to GraphDB");
+        System.out.println("2. Save to file");
+        System.out.print("Enter choice (1 or 2): ");
+
+        String choice = scanner.nextLine().trim().toLowerCase();
+
+        switch (choice) {
+            case "1":
+                uploadToGraphDB(modelBuilder);
+                break;
+            case "2":
+                saveToFile(modelBuilder);
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter 1 or 2.");
+        }
+        scanner.close();
+    }
+
+    private static void addDataProperties(ModelBuilder modelBuilder, IRI fromSubject, Predicate predicate)
+    {
+        modelBuilder.subject(vf.createIRI(OntologyIdentity.NAMESPACE.getValue(), predicate.getSurveyColumn().getFieldName()))
+                .add(RDF.TYPE, OWL.DATATYPEPROPERTY)
+                .add(RDFS.DOMAIN, SimpleValueFactory
+                        .getInstance()
+                        .createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName()))
+                .add(RDFS.RANGE, predicate.getXSD())
+                .add(RDFS.LABEL, predicate.getSurveyColumn().getFieldName());
+
+        modelBuilder.subject(fromSubject);
+    }
+
+    private static void uploadToGraphDB(ModelBuilder modelBuilder) throws IOException {
         Path path = Paths.get(".").toAbsolutePath().normalize();
         String graphDBRepoConfig = path.toFile().getAbsolutePath() + "/src/main/resources/repoConfig.ttl";
         String strServerUrl = "http://localhost:7200";
@@ -117,29 +153,29 @@ public class Main {
 
         Repository repository = repositoryManager.getRepository("miniproject");
 
-        try (OutputStream outputStream = new FileOutputStream("output.ttl")) {
+        try (OutputStream outputStream = new FileOutputStream(path.toFile().getAbsolutePath() + "/src/main/resources/output.ttl")) {
             Rio.write(modelBuilder.build(), outputStream, RDFFormat.TURTLE);
-            System.out.println("RDF written to output.ttl using OutputStream.");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try (RepositoryConnection con = repository.getConnection()) {
-            con.add((new FileInputStream("output.ttl")), RDFFormat.TURTLE);
+            con.add((new FileInputStream(path.toFile().getAbsolutePath() + "/src/main/resources/output.ttl")), RDFFormat.TURTLE);
             System.out.println("✅ RDF model successfully uploaded to GraphDB.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+
     }
 
-    private static void addDataProperties(ModelBuilder modelBuilder, IRI fromSubject, Predicate predicate)
-    {
-        modelBuilder.subject(vf.createIRI(OntologyIdentity.NAMESPACE.getValue(), predicate.getSurveyColumn().getFieldName()))
-                .add(RDF.TYPE, OWL.DATATYPEPROPERTY)
-                .add(RDFS.DOMAIN, SimpleValueFactory
-                        .getInstance()
-                        .createIRI(OntologyIdentity.NAMESPACE.getValue() + OntologyClass.DEVELOPER.getClassName()))
-                .add(RDFS.RANGE, predicate.getXSD())
-                .add(RDFS.LABEL, predicate.getSurveyColumn().getFieldName());
-
-        modelBuilder.subject(fromSubject);
+    private static void saveToFile(ModelBuilder modelBuilder) {
+        Path path = Paths.get(".").toAbsolutePath().normalize();
+        try (OutputStream outputStream = new FileOutputStream(path.toFile().getAbsolutePath() + "/src/main/resources/output.ttl")) {
+            Rio.write(modelBuilder.build(), outputStream, RDFFormat.TURTLE);
+            System.out.println("✅ RDF written to output.ttl using OutputStream.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
