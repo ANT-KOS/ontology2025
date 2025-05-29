@@ -7,18 +7,29 @@ import Constants.SurveyColumn;
 import Services.IRIFactory;
 import com.opencsv.CSVReader;
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.TreeModel;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
+import org.eclipse.rdf4j.model.util.Models;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.config.RepositoryConfig;
+import org.eclipse.rdf4j.repository.config.RepositoryConfigSchema;
+import org.eclipse.rdf4j.repository.manager.RemoteRepositoryManager;
+import org.eclipse.rdf4j.repository.manager.RepositoryManager;
 import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -79,11 +90,43 @@ public class Main {
             }
         }
 
+        Path path = Paths.get(".").toAbsolutePath().normalize();
+        String graphDBRepoConfig = path.toFile().getAbsolutePath() + "/src/main/resources/repoConfig.ttl";
+        String strServerUrl = "http://localhost:7200";
+
+        RepositoryManager repositoryManager = new RemoteRepositoryManager(strServerUrl);
+        repositoryManager.init();
+        repositoryManager.getAllRepositories();
+
+        TreeModel graph = new TreeModel();
+
+        InputStream config = new FileInputStream(graphDBRepoConfig);
+        RDFParser rdfParser = Rio.createParser(RDFFormat.TURTLE);
+        rdfParser.setRDFHandler(new StatementCollector(graph));
+        rdfParser.parse(config, RepositoryConfigSchema.NAMESPACE);
+        config.close();
+
+        Resource repositoryNode =  Models.subject(graph
+                        .filter(null, RDF.TYPE, RepositoryConfigSchema.REPOSITORY))
+                .orElseThrow(() -> new RuntimeException(
+                        "Oops, no <http://www.openrdf.org/config/repository#> subject found!"));
+
+
+        RepositoryConfig repositoryConfig = RepositoryConfig.create(graph, repositoryNode);
+        repositoryManager.addRepositoryConfig(repositoryConfig);
+
+        Repository repository = repositoryManager.getRepository("miniproject");
+
         try (OutputStream outputStream = new FileOutputStream("output.ttl")) {
             Rio.write(modelBuilder.build(), outputStream, RDFFormat.TURTLE);
             System.out.println("RDF written to output.ttl using OutputStream.");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        try (RepositoryConnection con = repository.getConnection()) {
+            con.add((new FileInputStream("output.ttl")), RDFFormat.TURTLE);
+            System.out.println("✅ RDF model successfully uploaded to GraphDB.");
         }
     }
 
